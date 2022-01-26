@@ -10,8 +10,6 @@ mongoose.connect(process.env.DB_URI, {
     console.log("connecting to database....");
 
     console.log(`mongoose connected with server: ${data.connection.host}`);
-}).catch((err)=>{
-    console.log(err.message);
 })
 }
 
