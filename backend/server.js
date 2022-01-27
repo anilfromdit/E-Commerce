@@ -10,10 +10,8 @@ process.on("uncaughtException",(error)=>{
 
    process.exit(1);
 })
-// console.log(uot);
 
-
-//config
+// dotenv config
 dotenv.config({ path: "backend/config/config.env" });
 
 //Connecting to database
@@ -22,7 +20,7 @@ connectDatabase();
 
 const server = app.listen(process.env.PORT, () => {
 
-    console.log(`server is working on http//localhost:${process.env.PORT}`)
+    console.log(`server is working on http://localhost:${process.env.PORT}`)
 
 })
 
