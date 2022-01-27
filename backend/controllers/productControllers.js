@@ -27,7 +27,8 @@ exports.getProductDetails = handleAsync( async (req,res,next)=>{
 //get all products 
 exports.getAllProducts= handleAsync( async(req,res)=>{
 
-    const apiFeature = new ApiFeature(Product.find(),req.query).search().filter();
+    const resultPerPage = 10;
+    const apiFeature = new ApiFeature(Product.find(),req.query).search().filter().pagination(resultPerPage);
 
     const products = await apiFeature.query;
     res.status(200).json({
