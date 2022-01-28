@@ -14,11 +14,14 @@ exports.registerUser = handleAsync(async(req,res,next)=>{
             public_id : "this is sample public id",
             url : "profile pic url"
         }
-    })
+    });
+
+    const token = User.getJWTTOKEN();
+
 
     res.status(201).json({
         success:true,
-        user
-    })
+        token,
+    });
 
 })
