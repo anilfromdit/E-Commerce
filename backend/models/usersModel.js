@@ -3,6 +3,7 @@ const { JsonWebTokenError } = require("jsonwebtoken");
 const mongoose= require("mongoose");
 const validator = require("validator");
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 
 const userSchema = new mongoose.Schema({
     name:{
@@ -42,15 +43,6 @@ const userSchema = new mongoose.Schema({
     resetPasswordExpiry: Date,
 });
 
-// userSchema.pre("save",async function(next){
-
-//     if(!this.isModified("Password")){
-//         next();
-//     }
-//     this.password = await bcrypt.hash(this.password,10);
-// })
-
-
 userSchema.pre("save", async function (next) {
     if (!this.isModified("password")) {
       next();
@@ -68,7 +60,26 @@ userSchema.methods.getJWTToken = function(){
     });
 };
 
+//verifying password
+
 userSchema.methods.comparePassword = async function (password) {
     return await bcrypt.compare(password, this.password);
   };
+
+//generating password reset token
+
+userSchema.methods.getResetPasswordToken = function(){
+    
+    //generating token
+    const resetToken = crypto.randomBytes(20).toString("hex");
+
+    //hashing and storing resetPasswordToken in user data
+    this.resetPasswordToken = crypto.createHash("sha256").update(resetToken).digest("hex");
+    this.resetPasswordExpiry = Date.now()+15*60*1000; //(15*60*1000 = 15 minutes)
+    
+    return resetToken;
+
+
+}
+
 module.exports = mongoose.model("User",userSchema);
