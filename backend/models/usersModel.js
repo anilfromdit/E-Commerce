@@ -1,4 +1,4 @@
-const bcrypt = require("bcryptjs/dist/bcrypt");
+const bcrypt = require("bcryptjs");
 const { JsonWebTokenError } = require("jsonwebtoken");
 const mongoose= require("mongoose");
 const validator = require("validator");
@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:[true,"Please Enter Your Password"],
         minLength:[8,"password should have at least 8 Characters"],
+        maxLength:[128,"password cannot exceed 128 characters"],
         select:false
     },
     avatar:{
@@ -41,20 +42,33 @@ const userSchema = new mongoose.Schema({
     resetPasswordExpiry: Date,
 });
 
-userSchema.pre("save",async function(next){
+// userSchema.pre("save",async function(next){
 
-    if(!this.isModified("Password")){
-        next();
+//     if(!this.isModified("Password")){
+//         next();
+//     }
+//     this.password = await bcrypt.hash(this.password,10);
+// })
+
+
+userSchema.pre("save", async function (next) {
+    if (!this.isModified("password")) {
+      next();
     }
-    this.password = await bcrypt.hash(this.password,10);
-})
+  
+    this.password = await bcrypt.hash(this.password, 10);
+  });
+
 
 //JWT Token
-userSchema.method.getJWTToken = function(){
+userSchema.methods.getJWTToken = function(){
 
     return jwt.sign({id:this._id},process.env.JWT_SECRET,{
         expiresIn:process.env.JWT_EXPIRE,
     });
-}
+};
 
-module.exports = mongoose.model("user",userSchema);
+userSchema.methods.comparePassword = async function (password) {
+    return await bcrypt.compare(password, this.password);
+  };
+module.exports = mongoose.model("User",userSchema);
