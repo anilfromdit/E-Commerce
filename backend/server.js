@@ -3,12 +3,12 @@ const dotenv = require("dotenv");
 const connectDatabase = require("./config/database");
 
 //handling uncaught exception
-process.on("uncaughtException",(error)=>{
+process.on("uncaughtException", (error) => {
 
     console.log(`Error:${error.message}`);
     console.log("Shutting down server due to uncaught promise rejection")
 
-   process.exit(1);
+    process.exit(1);
 })
 
 // dotenv config
