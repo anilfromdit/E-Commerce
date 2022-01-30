@@ -152,3 +152,79 @@ exports.updatePassword = handleAsync(async(req,res,next)=>{
   sendToken(user,200,res);
 
 })
+
+
+//Update user profile
+exports.updateProfile = handleAsync(async(req,res,next)=>{
+  const newUserData={
+    name: req.body.name,
+    email:req.body.email
+  }
+
+  const user = await User.findByIdAndUpdate(req.user.id,newUserData,{
+    new:true,
+    runValidators:true,
+    useFindAndModify:false,
+  });
+  res.status(200).json({
+    success:true,
+  });
+
+})
+
+// get all users (admin)
+exports.getAllUsers = handleAsync(async(req,res,next)=>{
+
+  const users = await User.find();
+  res.status(200).json({
+    success:true,
+    users,
+  });
+})
+
+// get single users (admin)
+exports.getSingleUser = handleAsync(async(req,res,next)=>{
+
+  const user = await User.findById(req.params.id);
+  if(!user){
+    return next(new ErrorHandler( `user does not exist with Id: ${req.params.id}`,401))}
+
+  res.status(200).json({
+    success:true,
+    user,
+  });
+})
+
+//modify user profile(name,email,role) --Admin
+exports.updateUserProfile = handleAsync(async(req,res,next)=>{
+  const newUserData={
+    name: req.body.name,
+    email:req.body.email,
+    role:req.body.role
+  }
+
+  const user = await User.findByIdAndUpdate(req.params.id,newUserData,{
+    new:true,
+    runValidators:true,
+    useFindAndModify:false,
+  });
+  res.status(200).json({
+    success:true,
+  });
+
+})
+//Delete some user's profile --Admin
+exports.deleteUser = handleAsync(async(req,res,next)=>{
+  const user = await User.findById(req.params.id);
+
+  if(!user){
+    return next(new ErrorHandler( `user does not exist with Id: ${req.params.id}`,400))}
+
+
+    await user.remove();
+  res.status(200).json({
+    success:true,
+    message:"User deleted successfully"
+  });
+
+})
