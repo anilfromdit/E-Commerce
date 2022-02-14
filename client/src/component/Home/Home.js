@@ -13,7 +13,7 @@ const Home = () => {
   const alert= useAlert();
   const dispatch = useDispatch();
 
-  const { loading, error, products, productsCount } = useSelector(
+  const { loading, error, products } = useSelector(
     (state) => state.products
   );
 
@@ -29,9 +29,9 @@ const Home = () => {
   return (
     <Fragment>
       {loading ? (<Loader/>) : (<Fragment>
-        <MetaData title='Ecom@anil | HOME' />
+        <MetaData title='E-mart | HOME' />
         <div className='banner'>
-          <p>Welcome to Buy With Anil</p>
+          <p>Welcome to E-Mart</p>
           <h1>Find Amazing Deals on Products Below</h1>
           <a href="#container">
             <button>Scroll<CgMouse /> </button>

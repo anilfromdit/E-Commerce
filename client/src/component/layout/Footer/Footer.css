@@ -41,8 +41,8 @@ cursor: pointer;
   
   .midFooter > h1 {
     font-size: 4vmax;
-    font-family: "Roboto";
-    color: #eb4034;
+    font-family: "Times New Roman";
+    color: cyan;
   }
   .midFooter > p {
     max-width: 60%;
@@ -74,3 +74,4 @@ cursor: pointer;
   .rightFooter > a:hover {
     color: #eb4034;
   }
+ 

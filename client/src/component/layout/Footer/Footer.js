@@ -13,7 +13,7 @@ const Footer = () => {
             </div>
             <div className="midFooter">
 
-                <h1>Buy with Anil</h1>
+                <h1 >E-Mart</h1>
                 <p>High quality and customer satisfaction is our first priority</p>
                 <p>anilfromdit&copy; 2021-{new Date().getFullYear()}. &nbsp; All Rights Reserved</p>
             </div>

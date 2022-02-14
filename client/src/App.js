@@ -16,7 +16,7 @@ function App() {
         families:["Roboto","Droid Sans","Chilanka"]
       }
     })
-    },[])
+    },[]) 
   return (
     <Router>
     <Header/>
