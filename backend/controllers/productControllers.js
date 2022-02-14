@@ -30,14 +30,15 @@ exports.getAllProducts = handleAsync(async (req, res,next) => {
 
 
     const productsCount = await Product.countDocuments();
-    const resultPerPage = 10;
+    const resultPerPage = 8;
     const apiFeature = new ApiFeature(Product.find(), req.query).search().filter().pagination(resultPerPage);
 
     const products = await apiFeature.query;
     res.status(200).json({
         success: true,
         products,
-        productsCount
+        productsCount,
+        resultPerPage
     })
 })
 

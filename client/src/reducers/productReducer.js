@@ -14,6 +14,7 @@ import { ALL_PRODUCT_REQUEST, ALL_PRODUCT_FAIL, ALL_PRODUCT_SUCCESS,PRODUCT_DETA
                 loading: false,
                 products: action.payload.products,
                 productsCount: action.payload.productsCount,
+                resultPerPage: action.payload.resultPerPage
             };
         case ALL_PRODUCT_FAIL:
             return {

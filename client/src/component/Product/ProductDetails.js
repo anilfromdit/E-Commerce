@@ -2,14 +2,14 @@ import React, { Fragment, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import "./ProductDetails.css"
 import { useSelector, useDispatch } from "react-redux"
-import { getProductDetails } from '../../actions/productActions';
+import { getProductDetails, clearErrors } from '../../actions/productActions';
 import { useParams } from 'react-router-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ReactStars from "react-rating-stars-component"
 import ReviewCard from "./ReviewCard.js"
 import Loader from "../layout/Loader/Loader.js"
+import {useAlert} from "react-alert"
 
-const options = {};
 
 const ProductDetails = () => {
   
@@ -22,6 +22,7 @@ const ProductDetails = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
+  const alert = useAlert();
 
 
   const { product, loading, error } = useSelector((state) => state.productDetails);
@@ -36,9 +37,13 @@ const ProductDetails = () => {
 }; 
 
   useEffect(() => {
+    if(error){
+      alert.error(error);
+      dispatch(clearErrors());
+    }
 
     dispatch(getProductDetails(id));
-  }, [dispatch, id]);
+  }, [dispatch, id,error,alert]);
 
   return (
     <Fragment>
