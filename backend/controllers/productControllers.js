@@ -28,23 +28,7 @@ exports.getProductDetails = handleAsync(async (req, res, next) => {
 //get all products 
 exports.getAllProducts = handleAsync(async (req, res,next) => {
 
-
-    // const resultPerPage = 5;
-    // const productsCount = await Product.countDocuments();
-    // const apiFeature = new ApiFeature(Product.find(), req.query).search().filter()
-
-    // let products = await apiFeature.query;
-    // const filteredProductsCount = products.length;
-    // apiFeature.pagination(resultPerPage)
-    // res.status(200).json({
-    //     success: true,
-    //     products,
-    //     productsCount,
-    //     resultPerPage,
-    //     filteredProductsCount
-    // });
-
-    const resultPerPage = 8;
+    const resultPerPage = 12;
     const productsCount = await Product.countDocuments();
   
     const apiFeature = new ApiFeatures(Product.find(), req.query).search().filter();
@@ -55,7 +39,7 @@ exports.getAllProducts = handleAsync(async (req, res,next) => {
   
     apiFeature.pagination(resultPerPage);
   
-    // products = await apiFeature.query;
+    products = await apiFeature.query.clone();
   
     res.status(200).json({
       success: true,
@@ -64,8 +48,6 @@ exports.getAllProducts = handleAsync(async (req, res,next) => {
       resultPerPage,
       filteredProductsCount,
     });
-
-
 });
 
 

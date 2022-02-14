@@ -9,7 +9,7 @@ import  Pagination from 'react-js-pagination'
 import {useAlert } from "react-alert"
 import Slider from "@material-ui/core/Slider"
 import Typography from "@material-ui/core/Typography"
-
+import MetaData from "../layout/MetaData";
 
 const categories =[
     "Computers and Accessories",
@@ -65,7 +65,7 @@ const Products = () => {
 
 {
     loading?<Loader/>:<Fragment>
-
+<MetaData title="Products | E-Mart"/>
         <h2 className='productsHeading'>Products</h2>
 <div className='products'>
 {products && products.map((product)=>(
