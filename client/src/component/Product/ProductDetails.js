@@ -12,7 +12,6 @@ import {useAlert} from "react-alert"
 import MetaData from "../layout/MetaData";
 
 
-
 const ProductDetails = () => {
   
 
