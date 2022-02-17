@@ -10,8 +10,8 @@ const Search = () => {
         e.preventDefault();
         if(keyword.trim()){
         window.location.href=`/products/${keyword}`;
-        }else{
-            history.push("/products");
+      }else{
+        window.location.href=`/products/`;
         }
 
     };
