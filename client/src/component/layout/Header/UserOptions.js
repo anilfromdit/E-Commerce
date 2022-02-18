@@ -15,8 +15,8 @@ const UserOptions = ({ user }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
     const options = [
-        { icon: <ListAltIcon />, name: "Your Orders", func: orders },
         { icon: <PersonIcon />, name: "Account", func: account },
+        { icon: <ListAltIcon />, name: "Your Orders", func: orders },
         { icon: <ExitToAppIcon />, name: "Log Out", func: logoutUser }
     ]
     if (user.role === "admin") {
