@@ -1,3 +1,4 @@
+
 .SpeedDial{
     position: fixed;
     top: 5vmax;
@@ -6,6 +7,6 @@
 .SpeedDialIcon{
     border-radius:100% ;
     border: 2px solid white;
-    width: 54px;
-    height: 54px;
+    width: 50px;
+    height: 50px;
 }

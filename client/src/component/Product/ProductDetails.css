@@ -23,13 +23,15 @@
 }
 
   .myCarousel{
-    width: 25vmax ;
-    /* border: 2px solid black; */
+    width: 25vmax;
+    padding: 2vmax;
+    border: 2px solid black;
     /* border-radius: 5px; */
   }
-  /* .CarouselImage {
-    width: 2vmax ! ;
-} */
+  .CarouselImage {
+    border: 2px solid black;
+    /* width: 2vmax ! ; */
+}
   
 .detailsBlock-1 > h2 {
   color: rgb(54, 54, 54);

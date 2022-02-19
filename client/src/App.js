@@ -30,7 +30,7 @@ function App() {
       }
     });
     dispatch(loadUser());
-    dispatch(getOffer());
+    // dispatch(getOffer());
   }, [dispatch]);
 
   return (
@@ -42,8 +42,8 @@ function App() {
         <Route exact path="/product/:id" element={<ProductDetails />} />
         <Route exact path="/products" element={<Products />} />
         <Route path="/products/:keyword" element={<Products />} />
-          <Route exact path="/account" element={<Profile />} />
-          <Route exact path="/me/update" element={<UpdateProfile />} />
+        <Route exact path="/account" element={<Profile />} />
+        <Route exact path="/me/update" element={<UpdateProfile />} />
         <Route exact path="/login" element={<LoginSignUp />} />
       </Routes>
       <Footer />

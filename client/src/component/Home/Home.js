@@ -36,10 +36,9 @@ const Home = () => {
     width:'100%',
     height:'40vh',
     alignItems: 'center',
-    padding: '20px 10px',
+    padding: '0 0',
     border:'2px solid black',
-    boxSizing:'border-box',
-    margin:'auto 0'
+    margin:'1vmax 5px'
 
   };
 
@@ -80,7 +79,7 @@ const Home = () => {
 
         <div>
           {offers?
-          <Slide {...properties}>
+          <Slide {...properties} >
             {offers && offers.map((offer) => (
               <img style={ style } key = { offer.name } src = { offer.image.url } alt = { offer.name } />
               ))}
