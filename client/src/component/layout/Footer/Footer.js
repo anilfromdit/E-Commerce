@@ -19,9 +19,9 @@ const Footer = () => {
             </div>
             <div className="rightFooter">
                 <h4>Follow Us</h4>
-                <a href="www.github.com/anilfromdit"> Github</a>
-                <a href="www.linkedin.com/in/anilfromdit">LinkedIn</a>
-                <a href="mailto:anilfromdit@gmail.com">email</a>
+                <a  onClick={(e)=> window.location.href=`https://github.com/anilfromdit`}> Github</a>
+                <a  onClick={(e)=> window.location.href=`https://www.linkedin.com/in/anilfromdit/`}>LinkedIn</a>
+                <a  onClick={(e)=> window.location.href=`mailto:anilfromdit@gmail.com`} >email</a>
             </div>
         </footer>
     );

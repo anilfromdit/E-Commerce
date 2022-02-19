@@ -14,10 +14,11 @@ app.use(fileUpload());
 const products = require("./routes/productRoute")
 const user = require("./routes/userRoutes")
 const order = require("./routes/orderRoute")
-
+const offers = require("./routes/offerRoute")
 app.use("/api/v1", products);
 app.use("/api/v1", user);
 app.use("/api/v1", order);
+app.use("/api/v1", offers);
 
 //Middleware for errors
 app.use(errorMiddleware);

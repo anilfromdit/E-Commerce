@@ -30,12 +30,13 @@ const Home = () => {
     <Fragment>
       {loading ? (<Loader/>) : (<Fragment>
         <MetaData title='E-mart | HOME' />
-        <div className='banner'>
+        {/* <div className='banner'>
           <p>Welcome to E-Mart</p>
           <h1>Find Amazing Deals on Products Below</h1>
           <a href="#container">
             <button>Scroll</button>
           </a>      </div>
+           */}
         <h2 className='homeHeading'>Featured Products</h2>
         <div className="container" id="container">
           {products && products.map((product) => (
