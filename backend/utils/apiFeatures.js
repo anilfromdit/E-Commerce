@@ -6,17 +6,14 @@ class ApiFeature {
     }
     offer(){
 
-        const queryCopy={...this.queryString}
-        // console.log(JSON.stringify(queryCopy))
+        const offerX = this.queryString.offer ? {
+            offer: {
+                $regex: this.queryString.offer,
+                $options: "i",
+            },
+        } : {};
 
-        const removeExtraStuff = ["keyword", "limit", "page","gt", "lt","lte","gte","category","price" ];
-        removeExtraStuff.forEach((key) => delete queryCopy[key]);
-
-        let queryStr = JSON.stringify(queryCopy);
-        queryStr = queryStr.replace(/\b(offer)\b/g, (key) => `\'${key}\'`);
-
-        this.query = this.query.find(JSON.parse(queryStr));  
-        console.log(JSON.parse(queryStr))
+        this.query = this.query.find({ ...offerX });
         return this;
     }
     

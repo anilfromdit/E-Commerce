@@ -64,13 +64,10 @@ const productSchema = new mongoose.Schema({
         },
     },
     ],
-    offers:[{
         offer:{
         type:String,
         trim:true
-        }}
-        
-    ],
+        },
 
     user: {
         type: mongoose.Schema.ObjectId,
