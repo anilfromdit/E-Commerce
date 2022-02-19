@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Profile from "./component/User/Profile.js"
 import UpdateProfile from "./component/User/UpdateProfile.js"
 import MyNavbar from './component/layout/Header/MyNavbar';
+import { getOffer } from './actions/offerAction';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
       }
     });
     dispatch(loadUser());
+    dispatch(getOffer());
   }, [dispatch]);
 
   return (

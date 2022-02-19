@@ -17,3 +17,16 @@ exports.createOffer = handleAsync(async(req,res,next)=>{
     const offer = await Offers.create(req.body);
     res.status(201).json({ success: true, offer })
 })
+
+exports.deleteOffer = handleAsync(async (req, res, next) => {
+    let offer = await Offers.findById(req.params.id);
+    if (!offer) {
+        return next(new ErrorHandler("Offer Not Found", 404))
+    }
+    await offer.remove();
+    res.status(200).json({
+        success: true,
+        message: "offer Deleted Successfully"
+    })
+
+})

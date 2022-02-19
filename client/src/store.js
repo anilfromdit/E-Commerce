@@ -3,9 +3,11 @@ import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
 import { productReducer,productDetailsReducer } from "./reducers/productReducer";
 import { profileReducer, userReducer } from "./reducers/userReducer";
+import { offerReducer } from "./reducers/offerReducer";
 
 const reducer = combineReducers({
     products:productReducer,
+    offers:offerReducer,
     productDetails:productDetailsReducer,
     user:userReducer,
     profile:profileReducer

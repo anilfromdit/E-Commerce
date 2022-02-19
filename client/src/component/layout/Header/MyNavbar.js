@@ -1,6 +1,5 @@
 import React, { Fragment, useState,useEffect } from "react";
 import "./MyNavbar.css";
-// import { GiHamburgerMenu } from "react-icons/gi";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 import { NavLink } from "react-router-dom";
@@ -8,7 +7,6 @@ import { useSelector } from "react-redux";
 
 const MyNavbar = () => {
     const [keyword, setKeyword] = useState("");
-    const [showMediaIcons, setShowMediaIcons] = useState(false);
     const{isAuthenticated}=useSelector((state)=>state.user)
 useEffect(() => {
   
