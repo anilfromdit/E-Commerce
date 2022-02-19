@@ -15,7 +15,8 @@ import UserOptions from "./component/layout/Header/UserOptions.js"
 import { useSelector, useDispatch } from 'react-redux';
 import Profile from "./component/User/Profile.js"
 import UpdateProfile from "./component/User/UpdateProfile.js"
-import ProtectedRoute from "./component/Route/ProtectedRoute";
+import MyNavbar from './component/layout/Header/MyNavbar';
+// import ProtectedRoute from "./component/Route/ProtectedRoute";
 
 
 function App() {
@@ -35,10 +36,10 @@ function App() {
 
   return (
     <Router>
-      <Header />
+      {/* <Header /> */}
+      <MyNavbar/>
       {isAuthenticated && <UserOptions user={user} />}
       <Routes>
-
         <Route exact path='/' element={<Home />} />
         <Route exact path="/product/:id" element={<ProductDetails />} />
         <Route exact path="/products" element={<Products />} />

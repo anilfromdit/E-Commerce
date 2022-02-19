@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReactNavbar} from "overlay-navbar"
+// import {ReactNavbar} from "overlay-navbar"
 import logo from "../../../images/logo.png"
 
 const options = {
@@ -38,7 +38,7 @@ const options = {
 }
 
 const Header = () => {
-  return <ReactNavbar {...options}/>;
+  // return <ReactNavbar {...options}/>;
 };
 
 export default Header;

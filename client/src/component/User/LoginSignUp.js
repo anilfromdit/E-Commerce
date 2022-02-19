@@ -117,7 +117,6 @@ if(isAuthenticated){
               type="email"
               placeholder='Email'
               required
-              value={loginEmail}
               onChange={(e) => setLoginEmail(e.target.value)}
             />
           </div>
@@ -127,7 +126,6 @@ if(isAuthenticated){
               type="password"
               placeholder='Password'
               required
-              value={loginPassword}
               onChange={(e) => setLoginPassword(e.target.value)}
             />
           </div>

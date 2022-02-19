@@ -4,6 +4,7 @@ import { SpeedDial, SpeedDialAction } from '@material-ui/lab'
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import ListAltIcon from '@mui/icons-material/ListAlt';
+import HomeIcon from '@mui/icons-material/Home';
 import { Backdrop } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import {useAlert} from "react-alert"
@@ -15,6 +16,7 @@ const UserOptions = ({ user }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
     const options = [
+        { icon: <HomeIcon />, name: "Home", func: home },
         { icon: <PersonIcon />, name: "Account", func: account },
         { icon: <ListAltIcon />, name: "Your Orders", func: orders },
         { icon: <ExitToAppIcon />, name: "Log Out", func: logoutUser }
@@ -27,6 +29,10 @@ const UserOptions = ({ user }) => {
     function orders() {
 
         window.location.href = `/orders`;
+    }
+    function home() {
+
+        window.location.href = `/`;
     }
     function account() {
 
@@ -47,7 +53,7 @@ const UserOptions = ({ user }) => {
                 ariaLabel='SpeedDial tooltip example'
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
-                style={{zIndex:"11"}}
+                style={{zIndex:"99"}}
                 open={open}
                 direction="down"
                 className='SpeedDial'

@@ -42,7 +42,7 @@ cursor: pointer;
   .midFooter > h1 {
     font-size: 4vmax;
     font-family: "Times New Roman";
-    color: cyan;
+    color: rgb(0 163 163);
   }
   .midFooter > p {
     max-width: 60%;
