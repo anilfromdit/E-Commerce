@@ -12,13 +12,13 @@ class ApiFeature {
                 $options: "i",
             },
         } : {};
-
         this.query = this.query.find({ ...offerX });
         return this;
     }
     
 
     search() {
+
         const keyword = this.queryString.keyword ? {
             name: {
                 $regex: this.queryString.keyword,
@@ -40,7 +40,6 @@ class ApiFeature {
         let queryStr = JSON.stringify(queryCopy);
         queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
         this.query = this.query.find(JSON.parse(queryStr));
-        console.log(JSON.parse(queryStr));
         return this;
     }
 

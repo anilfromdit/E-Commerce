@@ -2,7 +2,7 @@ import axios from "axios";
 import { ALL_PRODUCT_REQUEST, ALL_PRODUCT_FAIL, ALL_PRODUCT_SUCCESS,PRODUCT_DETAILS_REQUEST,PRODUCT_DETAILS_SUCCESS,PRODUCT_DETAILS_FAIL,
     CLEAR_ERRORS } from "../constants/productConstants"
 
-export const getProduct = (keyword="",currentPage=1,price=[0,250000],category,ratings=0
+export const getProduct = (keyword="",currentPage=1,price=[0,250000],category,ratings=0,offer=""
 ) => async (dispatch) => {
     try {
         dispatch({
@@ -13,6 +13,11 @@ export const getProduct = (keyword="",currentPage=1,price=[0,250000],category,ra
         if (category) {
             link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
           }
+          if(offer.length>2){
+              link=link+`&offer=${offer}`;
+
+          }
+          console.log(link)
         const {data} = await axios.get(link);
 
         dispatch({

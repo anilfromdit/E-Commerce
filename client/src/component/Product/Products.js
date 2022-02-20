@@ -38,11 +38,11 @@ const Products = () => {
     const [currentPage,setCurrentPage]= useState(1);
     const [price,setPrice]=useState([0,250000]);
     const [category,setCategory]=useState("");
-    
     const [ratings, setRatings] = useState(0);
     const {products,loading,error,productsCount,resultPerPage,filteredProductsCount}=useSelector(state=>state.products);
-
+// const [offer,setOffer]=useState('')
     const {keyword} = useParams();
+    const{offer}=useParams()
     const setCurrentPageNo = (e)=>{
         setCurrentPage(e)
     }
@@ -56,8 +56,8 @@ const Products = () => {
             alert.error(error);
             dispatch(clearErrors());
         }
-        dispatch(getProduct(keyword,currentPage,price,category,ratings));
-    },[dispatch,keyword,currentPage,price,category,ratings,alert,error])
+        dispatch(getProduct(keyword,currentPage,price,category,ratings,offer));
+    },[dispatch,keyword,currentPage,price,category,ratings,alert,error,offer])
 
     let count = filteredProductsCount;
 

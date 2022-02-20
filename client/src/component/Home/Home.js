@@ -73,14 +73,15 @@ const Home = () => {
     <Fragment>
       {loading ? (<Loader />) : (<Fragment>
         <MetaData title='E-mart | HOME' />
-
-
-
         <div>
           {offers?
           <Slide {...properties} >
             {offers && offers.map((offer) => (
-              <img style={ style } key = { offer.name } src = { offer.image.url } alt = { offer.name } />
+              <img style={ style } key = { offer.name } src = { offer.image.url } alt = { offer.name } onClick={
+                e=>{
+                  window.location.href=`/products/offer/${offer.name}`
+                }
+              } />
               ))}
           </Slide> 
           :
