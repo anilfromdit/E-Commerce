@@ -9,7 +9,6 @@ import { useSelector, useDispatch } from "react-redux"
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import { getOffer } from '../../actions/offerAction.js';
-import { margin } from '@mui/system';
 
 const Home = () => {
 
@@ -29,7 +28,7 @@ const Home = () => {
     dispatch(getProduct());
     dispatch(getOffer());
     
-  }, [dispatch,error]);
+  }, [dispatch,error,alert]);
 
 
   const style = {

@@ -1,18 +1,18 @@
 import React from 'react';
 import {Link } from "react-router-dom"
-import ReactStars from "react-rating-stars-component"
+// import ReactStars from "react-rating-stars-component"
 
 
 const ProductCard = ({product}) => {
   
-  const options={
-      edit:false,
-      color:"rgba(20,20,20,0.1)",
-      activeColor:"tomato",
-      value:product.ratings,
-      isHalf:true,
-      size:window.innerWidth<600?20:25,
-  };
+  // const options={
+  //     edit:false,
+  //     color:"rgba(20,20,20,0.1)",
+  //     activeColor:"tomato",
+  //     value:product.ratings,
+  //     isHalf:true,
+  //     size:window.innerWidth<600?20:25,
+  // };
   return (
 <Link className='productCard' to={`/product/${product._id}`}>
 
@@ -31,12 +31,12 @@ const ProductCard = ({product}) => {
         </div>
       </div>
     </div>
-    
+
     <div class="item-wrapper">
       <div class="content-wrapper">
         <div class="img-container">
           <div class="bg-square"></div>
-          <img class="item-img" src={product.images[0].url} />
+          <img class="item-img" src={product.images[0].url} alt={product.name} />
         </div>
 
         <div class="content-text">
