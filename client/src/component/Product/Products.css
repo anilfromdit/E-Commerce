@@ -13,7 +13,7 @@
     flex-wrap: wrap;
     padding: 0 5vmax;
     justify-content: center;
-    min-height: 50vh;
+    min-height: 60vh;
 }
 
 .paginationBox{
@@ -69,25 +69,31 @@ color: white;
 .filterBox{
     width: 10vmax;
     position: absolute;
-    top: 10vmax;
-    left: 4vmax;
+    top: 14vmax;
+    left: 2vmax;
 }
 
 .categoryBox{
-    padding: 0%;
+    padding: 0 0;
+    margin: 5px 0;
+    border:1px solid black;
 
+}
+legend{
+    text-align: center;
 }
 
 .category-link{
     list-style:none;
-    color: rgba(0,0,0,0.61);
+    color: rgba(0,0,0,0.51);
     font:400 0.8vmax "Roboto";
     margin: 0.4vmax;
     cursor: pointer;
-    transition: all 0.5s;
+    transition: all 0.1s;
 }
 .category-link:hover{
-    color:cyan;
+    color:rgba(0, 0, 139, 0.795);
+    transform: scale(1.08);
 }
 
 .filterBox > fieldset {
@@ -107,3 +113,8 @@ color: white;
         font: 400 1.8vmax "Roboto";
       }
 }
+.border {
+    text-align: center;
+    padding: 0 7px;
+    border:1px solid black
+  }

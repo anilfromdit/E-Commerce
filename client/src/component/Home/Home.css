@@ -22,6 +22,7 @@ html{
   
   .productCard{
     background: rgba(209, 227, 221, 0.4);
+    min-height: 525px;
     border-radius: 9px;
       text-decoration: none;
       color:rgb(48,48,48);
@@ -52,7 +53,7 @@ html{
 .item-wrapper {
   position: relative;
   width: 100%;
-  height: 100%;
+  min-height: 110%;
   overflow: hidden;
 }
 
@@ -135,6 +136,7 @@ html{
   font-size: 1.35em;
   text-transform: uppercase;
   text-align: center;
+  margin-top: -20px;
 }
 
 .item-subtext-container {
@@ -150,7 +152,7 @@ html{
 
 .view-more-btn {
   position: absolute;
-  bottom: 0;
+  bottom: 30px;
   width: 100%;
   height: 35px;
   background: #333;
