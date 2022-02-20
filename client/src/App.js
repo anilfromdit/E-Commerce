@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Profile from "./component/User/Profile.js"
 import UpdateProfile from "./component/User/UpdateProfile.js"
 import MyNavbar from './component/layout/Header/MyNavbar';
-import Page404 from './component/Home/Misc/Page404';
+import Page404 from './component/Misc/Page404';
 // import { getOffer } from './actions/offerAction';
 
 
