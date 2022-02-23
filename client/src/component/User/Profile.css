@@ -137,6 +137,9 @@
     .userContactInfo{
       align-self: flex-start;
     }
+    .userShippingInfo{
+      padding-left: 19vmax;
+    }
 
     .profileContainer > div:first-child > a {
       font: 400 1.7vmax "Roboto";
