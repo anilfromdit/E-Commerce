@@ -11,6 +11,22 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please Enter Product Description"],
     },
+    mrp: {
+        type: Number,
+        required: [true, "Please Enter Product MRP"]
+    },
+    warranty: {
+        type: String,
+        default: "N/A"
+    },
+    brand: {
+        type: String,
+        required: [true, "Please Enter Product Brand"]
+    },
+    insideBox: [
+        {
+            item: String,
+        }],
     price: {
         type: Number,
         required: [true, "Please Enter Product Price"],
@@ -19,6 +35,7 @@ const productSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+
     images: [
         {
             public_id: {
@@ -64,10 +81,10 @@ const productSchema = new mongoose.Schema({
         },
     },
     ],
-        offer:{
-        type:String,
-        trim:true
-        },
+    offer: {
+        type: String,
+        trim: true
+    },
 
     user: {
         type: mongoose.Schema.ObjectId,
@@ -78,6 +95,10 @@ const productSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    longProductDescription: {
+        type: String,
+    }
+
 })
 
 module.exports = mongoose.model("Product", productSchema);

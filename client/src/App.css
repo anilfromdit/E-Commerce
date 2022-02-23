@@ -19,3 +19,6 @@ input[type=number]{
 .redColor{
     color:red;
 }
+:root{
+    --primaryColor:rgba(6, 6, 71, 0.87);
+}

@@ -1,21 +1,23 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import "./ProductDetails.css"
 import { useSelector, useDispatch } from "react-redux"
-import { getProductDetails, clearErrors } from '../../actions/productActions';
+import { getProductDetails, clearErrors,getProduct } from '../../actions/productActions';
 import { useParams } from 'react-router-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ReactStars from "react-rating-stars-component"
 import ReviewCard from "./ReviewCard.js"
 import Loader from "../layout/Loader/Loader.js"
-import {useAlert} from "react-alert"
+import { useAlert } from "react-alert"
 import MetaData from "../layout/MetaData";
+import Product from '../Home/ProductCard';
+
 
 
 const ProductDetails = () => {
-  
 
- 
+
+
 
   const submitReviewToggle = () => {
     // open ? setOpen(false) : setOpen(true);
@@ -27,108 +29,165 @@ const ProductDetails = () => {
 
 
   const { product, loading, error } = useSelector((state) => state.productDetails);
+  const [quantity, setQuantity] = useState(1);
+  const options = {
+    edit: false,
+    color: "rgba(20,20,20,0.1)",
+    activeColor: "tomato",
+    value: product.ratings,
+    isHalf: true,
+    size: window.innerWidth < 600 ? 20 : 25,
+  };
+  const increaseQuantity = () => {
+    if (product.Stock <= quantity) return;
 
-  const options={
-    edit:false,
-    color:"rgba(20,20,20,0.1)",
-    activeColor:"tomato",
-    value:product.ratings,
-    isHalf:true,
-    size:window.innerWidth<600?20:25,
-}; 
+    const qty = quantity + 1;
+    setQuantity(qty);
+  };
+
+  const decreaseQuantity = () => {
+    if (1 >= quantity) return;
+
+    const qty = quantity - 1;
+    setQuantity(qty);
+  };
+  const { products } = useSelector(
+    (state) => state.products
+  );
 
   useEffect(() => {
-    if(error){
+    if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
 
     dispatch(getProductDetails(id));
-  }, [dispatch, id,error,alert]);
+    dispatch(getProduct());
+  }, [dispatch, id, error, alert]);
 
   return (
     <Fragment>
       {
-        loading?<Loader/>:<Fragment>
-          
-<MetaData title={`${product.name} | E-Mart`}/>
-        <div className="ProductDetails">
-          <div className='carouselWrapper'>
-            <Carousel className='myCarousel'
-              autoPlay={true}
-              showArrows={false}
-              infiniteLoop={true}
-              stopOnHover={false}
-              showThumbs={true}
-              showStatus={false}
-              showIndicators={true}
-            >
-              {product.images &&
-                product.images.map((item, i) => (
-                  <img
-                    className="CarouselImage"
-                    key={i}
-                    src={item.url}
-                    alt={`${i} Slide`}
-                  />
-    
-                ))}
-            </Carousel>
-          </div>
-    
-          <div>
-            <div className="detailsBlock-1">
-              <h2>{product.name}</h2>
-              <p>Product # {product._id}</p>
+        loading ? <Loader /> : <Fragment>
+
+
+          <MetaData title={`${product.name} | E-Mart`} />
+
+          <div className="ProductDetails">
+            <div className='carouselWrapper'>
+              <Carousel className='myCarousel'
+                autoPlay={true}
+                showArrows={false}
+                infiniteLoop={true}
+                stopOnHover={false}
+                showThumbs={true}
+                showStatus={false}
+                showIndicators={true}
+              >
+                {product.images &&
+                  product.images.map((item, i) => (
+                    <img
+                      className="CarouselImage"
+                      key={i}
+                      src={item.url}
+                      alt={`${i} Slide`}
+                    />
+
+                  ))}
+              </Carousel>
             </div>
-            <div className="detailsBlock-2">
-              <ReactStars {...options} />
-              <span className="detailsBlock-2-span">
-                {" "}
-                ({product.numOfReviews} Reviews)
-              </span>
-            </div>
-    
-            <div className='detailsBlock-3'>
-              <h1> &#x20B9; {`${product.price}`} </h1>
-              <div className='detailsBlock-3-1'>
-                <div className='detailsBlock-3-1-1'>
-                  <button>-</button>
-                  <input value={1} type="number" />
-                  <button>+</button>
-                </div>
-                <button>Add to cart</button>
+            <div>
+              <div className="detailsBlock-1">
+                <h2>{product.name}</h2>
+                <p>Product # {product._id}</p>
               </div>
-    
-              <p>Status:
-                <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
-                  {product.Stock < 1 ? "OutOfStock" : "InStock"}
-                </b>
+              <div className="detailsBlock-2">
+                <ReactStars {...options} />
+                <span className="detailsBlock-2-span">
+                  {" "}
+                  ({product.numOfReviews} Reviews)
+                </span>
+              </div>
+
+              <div className='detailsBlock-3'>
+                {
+                  product.mrp ? <h4>  &#x20B9;<strike> {`${product.mrp}`} </strike> </h4> : ""
+                }
+                <h1> &#x20B9; {`${product.price}`} </h1>
+                <div className='detailsBlock-3-1'>
+                  <div className='detailsBlock-3-1-1'>
+                    <button onClick={decreaseQuantity}>-</button>
+                    <input readOnly type="number" value={quantity} />
+                    <button onClick={increaseQuantity}>+</button>
+                  </div>
+                  <button>
+                    Add to Cart
+                  </button>
+                </div>
+
+                <p>Status:
+                  <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
+                    {product.Stock < 1 ? "Out Of Stock" : "In Stock"}
+                  </b>
+                </p>
+              </div>
+
+              <div className="detailsBlock-4">
+                Short Description  <p>{product.description}</p>
+              </div>
+
+
+
+            </div>
+
+          </div>
+          <hr />
+          {product.longProductDescription &&
+            <div className='aboutProduct'>
+              <h4 className='longDescHeading'>About this item</h4>
+              <p>
+                {product.longProductDescription.split("..").map((line) => (
+                  <ul>
+                    <li>
+                      {line}
+                    </li>
+                  </ul>
+                ))}
+
               </p>
             </div>
-    
-            <div className="detailsBlock-4">
-              Description : <p>{product.description}</p>
+          }
+          <h3 className="reviewsHeading">REVIEWS</h3>
+
+          {product.reviews && product.reviews[0] ? (
+            <div className='reviews'>
+              {product.reviews && product.reviews.map((review) => <ReviewCard review={review} />)}
             </div>
+          ) : (
+            <p className='noReviews'>No Reviews Yet</p>
+          )
+          }
+          <div id="submitReviewClass">
             <button onClick={submitReviewToggle} className="submitReview">
-              Submit Review
+              Submit A Review
             </button>
-    
           </div>
-    
+          <hr />
+
+          <div className="productSuggestion">
+            <h3>You may also like
+            </h3>
+            <hr />
+            <div className="suggestedProducts">
+          {products && products.map((product) => (
+            <Product product={product} key={product._id} />
+          ))}
         </div>
-        <h3 className="reviewsHeading">REVIEWS</h3>
-    
-        {product.reviews && product.reviews[0] ? (
-          <div className='reviews'>
-            {product.reviews && product.reviews.map((review) => <ReviewCard review={review}/> )}
-            </div>
-        ) : (
-          <p className='noReviews'>No Reviews Yet</p>
-        )
-        }
-    
-      </Fragment>
+          </div>
+
+
+
+        </Fragment>
       }
     </Fragment>
   );
