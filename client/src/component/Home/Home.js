@@ -33,7 +33,7 @@ const Home = () => {
 
   const style = {
     width:'100%',
-    height:'40vh',
+    height:'35vh',
     alignItems: 'center',
     padding: '0 0',
     border:'2px solid black',

@@ -1,16 +1,16 @@
-.profileContainer {
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-    max-width: 100%;
-    background-color: white;
-  }
+.mainWrapper{
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  background-color: white;
 
-  
+}
+
   .profileContainer > div {
     display: flex;
     height: 100vh;
-    width: 100vw;
+    width: 50vw;
     max-width: 100%;
     flex-direction: column;
     /* justify-content: center; */
@@ -56,6 +56,8 @@
       margin: 0.5vmax ;
     }
   
+    
+
   .profileContainer > div:first-child > a {
     border: none;
     background-color: rgba(0, 0, 139, 0.795);
@@ -68,61 +70,125 @@
     margin: 4vmax;
     text-align: center;
     transition: all 0.5s;
-  }
+  } 
+ 
   
-  .profileContainer > div:first-child > a:hover {
-    background-color:  rgba(0, 0, 139, 0.604);
-  }
-  
-  .profileContainer > div:last-child {
-    justify-content: space-evenly;
-    align-items: flex-start;
-    padding: 5vmax;
-    box-sizing: border-box;
-  }
-  
-  .profileContainer > div:last-child > div > h4 {
-    color: black;
-    font: 400 1.2vmax "Roboto";
-  }
-  
-  .profileContainer > div:last-child > div > p {
-    color: rgba(0, 0, 0, 0.418);
-    font: 400 1vmax cursive;
-    margin: 0.2vmax;
-  }
-  
-  .profileContainer > div:last-child > div:last-child {
+  .right {
     display: flex;
-    flex-direction: column;
-    width: 60%;
+    align-items: flex-start;
+    box-sizing: border-box;
+    /* border: 2px solid black; */
+    padding:  2vmax;
+    width: 50vw;
   }
-  
-  .profileContainer > div:last-child > div:last-child > a {
+  .right a{
+    display: flex;
+    flex-direction: row;
     border: none;
-    background-color: rgb(68, 68, 68);
     font: 400 1vmax "Roboto";
-    color: white;
     text-decoration: none;
     padding: 0.5vmax;
+    border-radius: 5px;
     text-align: center;
-    transition: all 0.5s;
-    margin: 1vmax 0;
+    color: black;
   }
-  
-  .profileContainer > div:last-child > div:last-child > a:hover {
-    background-color:  rgba(0, 0, 139, 0.604);
-    
+  .Wrapper{
+    border: 1px solid black;
+    margin: 1vmax 2vmax;
+    padding: 1vmax;
+    cursor: pointer;
+    width: 35%;
   }
-  
-  @media screen and (max-width: 600px) {
-    .profileContainer {
+  .orderIcon{
+display: flex;
+color:var(--primaryColor);
+padding-right: 10px;
+}
+  .stuff h3{
+    font: 300 1.5vmax "Roboto";
+    text-align: left;
+  }
+  .stuff h6{
+    text-align: left;
+    font: 300 0.75vmax "Roboto";
+    color:rgba(0, 0, 0, 0.518);
+    margin: 5px 0;
+  }
+
+.recentOrders{
+  text-align: center;
+  display: block;
+  width: 50vw;
+  margin: auto;
+}
+.recentOrders h3{
+  font: 300 2vmax "Roboto";
+  width: fit-content;
+  margin: auto;
+  border-bottom: 1px solid gray;
+  padding: 5px 10%;
+} 
+.noOrder{
+  display: flex;
+margin: 4vmax 0;
+flex-direction: column;
+align-items: center;
+}
+.noOrder a{
+  display: flex;
+  flex-direction: row;
+  border: none;
+  font: 400 1vmax "Roboto";
+  text-decoration: none;
+  padding: 0.5vmax;
+  border-radius: 5px;
+  text-align: center;
+  color: black;
+}
+
+#someh6{
+  margin-left: 15px;
+}
+
+.noOrder .Wrapper{
+  width: 50%;
+}
+.noOrder .Wrapper .orderIcon{
+  width: fit-content;
+  color:var(--primaryColor);
+  display: block;
+  margin: auto 0;
+
+  }
+  .stuff h3{
+    width: 100%;
+    border: none;
+  }
+  #someIdBecauseGuptaKringGussa{
+    font-size: 1.5vmax;
+    color: rgba(0, 0, 0, 0.518);
+  }
+
+  #irritatedMeNamingDivs{
+    border:1px solid black;
+    width: fit-content;
+    display: flex;
+padding: 5px 15px;
+padding-right: 25px;
+justify-content: center;
+align-items: center;
+  }
+
+@media screen and (max-width: 600px) {
+    .mainWrapper {
       flex-direction: column;
+      height: auto;
     }
   
     .profileContainer > div {
       font: 400 1.5vmax "Roboto";
-      justify-content: center;
+      height: auto;
+      margin:  0 auto;
       align-items: center;
       transform: translateY(-2vmax);
     }
@@ -132,37 +198,75 @@
     }
     .userName{
       font-size: 3.5vmax;
+      width: max-content;
     }
 
-    .userContactInfo{
-      align-self: flex-start;
+    .right{
+      /* border:2px solid black; */
+      margin: 0 auto;
+      flex-direction: column;
+      height: auto;
     }
+    .right .Wrapper{
+width: 150%;
+    }
+    .right .Wrapper h3{
+      font-size: 2.5vmax;
+    }
+
+    
+    .right .Wrapper h6{
+      font-size: 1.5vmax;
+    }
+
+    .noOrder{
+      font-size: 3vmax;
+    }
+    .userContactInfo,
     .userShippingInfo{
-      padding-left: 19vmax;
-    }
-
-    .profileContainer > div:first-child > a {
-      font: 400 1.7vmax "Roboto";
-      padding: 1vmax;      
+      align-items: flex-start;
+      justify-content: left;
+      margin: 0;
+      text-align: left;
     }
     
-    .profileContainer > div:last-child {
+    .profileContainer > div:first-child > a {
+      font: 400 1.7vmax "Roboto";
+      padding: 2vmax;
+      width:50%;      
+    }
+ 
+    .right {
       text-align: center;
       align-items: center;
     }
-    
-    .profileContainer > div:last-child > div > h4 {
-      font: 400 2.5vmax "Roboto";
+
+    .recentOrders .noOrder .Wrapper{
+      /* height: 50vh; */
+      padding: auto;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 2.5vmax;
     }
-  
-    .profileContainer > div:last-child > div > p {
-      font: 400 2vmax cursive;
-      margin: 0.5vmax 0;
+    #myWr .stuff h3{
+      font-size: 2.5vmax;
+      width: 150%;
+      border: none;
+      margin: 0;
     }
-  
-    .profileContainer > div:last-child > div:last-child > a {
-      font: 400 1.8vmax "Roboto";
-      padding: 1vmax;
-      margin: 2vmax 0;
+    #someh6{
+      margin: 0;
+      width: 150%;
+      padding: auto;
+      font-size: 1.5vmax;
+    }
+    #irritatedMeNamingDivs{
+      border:1px solid black;
+      width: 100vw;
+      
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
     }
   }
