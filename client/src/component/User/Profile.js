@@ -36,8 +36,7 @@ const Profile = () => {
                         <h4>{user.email}</h4>
                       </>
                     }
-                  </div>
-
+                  </div> 
                   <div className="userShippingInfo">
                     <h3 className="userHeadings">Saved Address</h3>
                     <h6>Address</h6>
@@ -53,9 +52,6 @@ const Profile = () => {
               </div>
               <div>
                 <div className="right">
-
-
-
                   <div className="Wrapper">
                     <Link to="/orders">
                       <div className="orderIcon">
@@ -70,7 +66,7 @@ const Profile = () => {
                   </div>
 
                   <div className="Wrapper">
-                    <Link to="/password/update">
+                    <Link to="/password/updatePassword">
                       <div className="orderIcon">
                         <LockIcon />
                       </div>
@@ -100,13 +96,11 @@ const Profile = () => {
                           <div className="stuff">
                             <h3 >Buy Something</h3>
                             <h6 id="someh6" > Your recent order history will appear here</h6>
-
                           </div>
                           </div>
                         </Link>
                       </div>
                     </div>
-
                   }
                 </div>
               </div>
