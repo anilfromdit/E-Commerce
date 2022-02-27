@@ -18,7 +18,7 @@ const UpdateProfile = () => {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [avatar, setAvatar] = useState();
+    const [avatar, setAvatar] = useState("");
     const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
 
     const updateProfileSubmit = (e) => {
@@ -77,7 +77,13 @@ const UpdateProfile = () => {
                                 <form className='updateProfileForm' encType='multipart-form-data' onSubmit={updateProfileSubmit}>
                                     <div className='updateProfileName'>
                                         <FaceIcon />
-                                        <input type='text' placeholder='Name' required name='name' value={name} onChange={(e) => setName(e.target.value)} />
+                                        <input type='text' 
+                                        placeholder='Name' 
+                                        required 
+                                        name='name'
+                                         value={name} 
+                                         onChange={(e) => setName(e.target.value)}
+                                          />
 
                                     </div>
                                     <div className='updateProfileEmail'>
@@ -94,7 +100,7 @@ const UpdateProfile = () => {
 
                                     <div id="updateProfileImage">
                                         <img src={avatarPreview} alt="Avatar Preview" />
-                                        <input type='file' name='avatar' accept='image/' onChange={updateProfileDataChange} />
+                                        <input type='file' name='avatar' accept='image/*' onChange={updateProfileDataChange} />
                                     </div>
                                     <input type="submit" value="Update" className='updateProfileBtn'
                                     />

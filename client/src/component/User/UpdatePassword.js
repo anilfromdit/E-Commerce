@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react'
 import "./UpdatePassword.css"
 import Loader from "../layout/Loader/Loader"
 import { useDispatch, useSelector } from 'react-redux';
-import { updatePassword, clearErrors } from "../../actions/userActions"
+import { updatePassword, clearErrors, loadUser } from "../../actions/userActions"
 import { useAlert } from "react-alert"
 import { UPDATE_PASSWORD_RESET } from '../../constants/userConstants';
 import MetaData from "../layout/MetaData";
@@ -20,12 +20,15 @@ const UpdatePassword = () => {
     const updatePasswordSubmit = (e) => {
         e.preventDefault();
         const myForm = new FormData();
-        myForm.set("oldPassword",oldPassword);
+        myForm.set("oldPassword", oldPassword);
         myForm.set("newPassword", newPassword);
         myForm.set("confirmPassword", confirmNewPassword);
         dispatch(updatePassword(myForm));
     }
+
+    const { isAuthenticated } = useSelector((state) => state.user);
     useEffect(() => {
+        dispatch(loadUser);
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
@@ -38,6 +41,7 @@ const UpdatePassword = () => {
             });
         }
     }, [dispatch, error, alert, isUpdated]);
+    // if (isAuthenticated) {
         return (
             <Fragment>
                 {loading ? <Loader /> :
@@ -48,7 +52,7 @@ const UpdatePassword = () => {
                                 <h2 className='updatePasswordHeading'>Update Profile</h2>
                                 <form className='updatePasswordForm' encType='multipart-form-data' onSubmit={updatePasswordSubmit}>
                                     <div className="loginPassword">
-                                        <VpnKeyIcon/>
+                                        <VpnKeyIcon />
                                         <input
                                             type="password"
                                             placeholder='Enter Old Password'
@@ -58,7 +62,7 @@ const UpdatePassword = () => {
                                         />
                                     </div>
                                     <div className="loginPassword">
-                                    <LockOpenIcon/>
+                                        <LockOpenIcon />
                                         <input
                                             type="password"
                                             placeholder='Enter New Password'
@@ -86,5 +90,8 @@ const UpdatePassword = () => {
                 }
             </Fragment>
         );
+    // } else {
+    //     window.location.href = '/login'
+    // }
 }
 export default UpdatePassword

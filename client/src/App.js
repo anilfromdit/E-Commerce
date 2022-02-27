@@ -3,20 +3,21 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import WebFont from 'webfontloader';
 import React from "react";
 import { useEffect } from "react";
-import Home from "./component/Home/Home.js"
-import Footer from "./component/layout/Footer/Footer.js"
-import ProductDetails from "./component/Product/ProductDetails.js"
-import Products from "./component/Product/Products.js"
+import Home from "./component/Home/Home"
+import Footer from "./component/layout/Footer/Footer"
+import ProductDetails from "./component/Product/ProductDetails"
+import Products from "./component/Product/Products"
 import LoginSignUp from './component/User/LoginSignUp';
 import { loadUser } from './actions/userActions';
-import UserOptions from "./component/layout/Header/UserOptions.js"
+import UserOptions from "./component/layout/Header/UserOptions"
 import { useSelector, useDispatch } from 'react-redux';
-import Profile from "./component/User/Profile.js"
-import UpdateProfile from "./component/User/UpdateProfile.js"
+import Profile from "./component/User/Profile"
+import UpdateProfile from "./component/User/UpdateProfile"
 import MyNavbar from './component/layout/Header/MyNavbar';
-import UpdatePassword from './component/User/UpdatePassword.js';
+import UpdatePassword from './component/User/UpdatePassword';
+import ForgotPassword from './component/User/ForgotPassword';
 import Page404 from './component/Misc/Page404';
-// import { getOffer } from './actions/offerAction';
+// import ProtectedRoute from "./component/Route/ProtectedRoute";
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
         <Route exact path="/me/update" element={<UpdateProfile />} />
         <Route exact path="/password/updatePassword" element={<UpdatePassword/>} />
         <Route exact path="/login" element={<LoginSignUp />} />
+        <Route exact path="/password/reset" element={<ForgotPassword/>} />
         <Route path="*" element={<Page404 />} />
       </Routes>
       <Footer />
