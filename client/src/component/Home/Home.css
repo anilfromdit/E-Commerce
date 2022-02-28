@@ -48,7 +48,13 @@ html{
   height: 425px;
   border-radius: 3px;
   box-shadow: 3px 4px 12px 1px rgba(0,0,0,0.3);
+  transition: all 1.5s;
 }
+
+.item:hover{
+  transform: translateY(-20px);
+}
+
 
 .item-wrapper {
   position: relative;

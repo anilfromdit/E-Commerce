@@ -10,7 +10,6 @@ import { useAlert } from "react-alert"
 import Slider from "@material-ui/core/Slider"
 import Typography from "@material-ui/core/Typography"
 import MetaData from "../layout/MetaData";
-import Stack from '@mui/material/Stack';
 
 const categories = [
   "Computers and Accessories",
@@ -47,10 +46,11 @@ const Products = () => {
   const setCurrentPageNo = (e) => {
     setCurrentPage(e)
   }
-  // const priceHandler = (event, newPrice) => {
-  //   setPrice(newPrice);
+  const priceHandler = (event, newPrice) => {
+    setPrice(newPrice);
+    dispatch(getProduct(keyword, currentPage, price, category, ratings, offer));
 
-  // }
+  }
 
   useEffect(() => {
     if (error) {
@@ -58,7 +58,7 @@ const Products = () => {
       dispatch(clearErrors());
     }
     dispatch(getProduct(keyword, currentPage, price, category, ratings, offer));
-  }, [dispatch, keyword, currentPage, price, category, ratings, alert, error, offer])
+  }, [dispatch, keyword, currentPage, category, ratings, alert, error, offer])
 
   let count = filteredProductsCount;
 
@@ -82,9 +82,7 @@ const Products = () => {
             <Slider
               size="large"
               value={price}
-              onChange={(e,newPrice)=>{
-                setPrice(newPrice);
-              }}
+              onChange={priceHandler}
               valueLabelDisplay="auto"
               aria-labelledby="continuous-slider"
                min={0} max={150000} />

@@ -21,4 +21,5 @@ input[type=number]{
 }
 :root{
     --primaryColor:rgba(6, 6, 71, 0.87);
+    --primaryColorHover:rgba(6, 6, 71, 0.712);
 }

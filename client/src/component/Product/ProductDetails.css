@@ -68,11 +68,6 @@
   margin: 0.1vmax 0;
 }
 
-.detailsBlock-3 > h1:hover {
-  color: rgba(6, 6, 71, 0.87);
-  font: 400 1.8vmax "Franklin Gothic Medium";
-  margin: 0.1vmax 0;
-}
 .detailsBlock-3-1 {
   display: flex;
   align-items: center;
@@ -87,7 +82,7 @@
   transition: all 0.5s;
 }
 .detailsBlock-3-1-1 > button:hover {
-  background-color: rgba(0, 0, 0, 0.767);
+  background-color: var(--primaryColorHover);
 }
 
 .detailsBlock-3-1-1 > input {
@@ -114,7 +109,7 @@
 }
 
 .detailsBlock-3-1 > button:last-child:hover {
-  background-color: rgb(214, 84, 61);
+  background-color: var(--primaryColorHover);
 }
 
 .detailsBlock-3 > p {
@@ -165,7 +160,7 @@ max-width: 90vw;
   outline: none;
 }
 .submitReview:hover {
-  background-color: rgb(197, 68, 45);
+  background-color: var(--primaryColorHover);
   transform: scale(1.1);
 }
 
