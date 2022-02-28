@@ -16,6 +16,7 @@ import UpdateProfile from "./component/User/UpdateProfile"
 import MyNavbar from './component/layout/Header/MyNavbar';
 import UpdatePassword from './component/User/UpdatePassword';
 import ForgotPassword from './component/User/ForgotPassword';
+import ResetPassword from './component/User/ResetPassword';
 import Page404 from './component/Misc/Page404';
 // import ProtectedRoute from "./component/Route/ProtectedRoute";
 
@@ -51,6 +52,7 @@ function App() {
         <Route exact path="/password/updatePassword" element={<UpdatePassword/>} />
         <Route exact path="/login" element={<LoginSignUp />} />
         <Route exact path="/password/reset" element={<ForgotPassword/>} />
+        <Route exact path="/password/reset/:token" element={<ResetPassword/>} />
         <Route path="*" element={<Page404 />} />
       </Routes>
       <Footer />

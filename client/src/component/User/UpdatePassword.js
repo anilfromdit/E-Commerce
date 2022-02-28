@@ -41,7 +41,7 @@ const UpdatePassword = () => {
             });
         }
     }, [dispatch, error, alert, isUpdated]);
-    // if (isAuthenticated) {
+    if (isAuthenticated) {
         return (
             <Fragment>
                 {loading ? <Loader /> :
@@ -90,8 +90,8 @@ const UpdatePassword = () => {
                 }
             </Fragment>
         );
-    // } else {
-    //     window.location.href = '/login'
-    // }
+    } else {
+        window.location.href = '/login'
+    }
 }
 export default UpdatePassword
