@@ -60,7 +60,8 @@ cursor: pointer;
   .rightFooter > h4 {
     font-family: "Roboto";
     font-size: 1.4vmax;
-    text-decoration: underline;
+    padding-bottom: 2px;
+    border-bottom:1px solid white;
   }
   .rightFooter > a {
     text-decoration: none;
@@ -72,6 +73,6 @@ cursor: pointer;
   }
   
   .rightFooter > a:hover {
-    color: #eb4034;
+    border-bottom:1px solid white;
   }
  
