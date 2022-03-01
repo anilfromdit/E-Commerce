@@ -40,7 +40,6 @@ const Products = () => {
   const [category, setCategory] = useState("");
   const [ratings, setRatings] = useState(0);
   const { products, loading, error, productsCount, resultPerPage, filteredProductsCount } = useSelector(state => state.products);
-  // const [offer,setOffer]=useState('')
   const { keyword } = useParams();
   const { offer } = useParams()
   const setCurrentPageNo = (e) => {
@@ -86,20 +85,7 @@ const Products = () => {
               valueLabelDisplay="auto"
               aria-labelledby="continuous-slider"
                min={0} max={150000} />
-
-{/* <Slider
-              onChange={(e, newRating) => {
-                setRatings(newRating);
-              }}
-              aria-labelledby="continuous-slider"
-              valueLabelDisplay="auto"
-              min={0}
-              max={5}
-            /> */}
-
           </div>
-
-
           <div className="categoryBox">
             <Typography component="legend" >Categories</Typography>
             <ul >
@@ -114,9 +100,6 @@ const Products = () => {
               ))}
             </ul>
           </div>
-
-
-
           <div className="border">
             <Typography >Ratings</Typography>
             <Slider
@@ -131,7 +114,6 @@ const Products = () => {
             />
           </div>
         </div>
-
 
         {resultPerPage < count && (
           <div className="paginationBox">
@@ -151,7 +133,6 @@ const Products = () => {
             />
           </div>
         )}
-
 
       </Fragment>
     }
