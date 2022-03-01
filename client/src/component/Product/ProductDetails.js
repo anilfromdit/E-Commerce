@@ -11,6 +11,7 @@ import Loader from "../layout/Loader/Loader.js"
 import { useAlert } from "react-alert"
 import MetaData from "../layout/MetaData";
 import Product from '../Home/ProductCard';
+import { addItemsToCart } from '../../actions/cartAction';
 
 
 
@@ -54,6 +55,10 @@ const ProductDetails = () => {
   const { products } = useSelector(
     (state) => state.products
   );
+  const addToCartHandler= () =>{
+    dispatch(addItemsToCart(id,quantity));
+    alert.success("Item Added To Cart");
+  }
 
   useEffect(() => {
     if (error) {
@@ -120,7 +125,7 @@ const ProductDetails = () => {
                     <input readOnly type="number" value={quantity} />
                     <button onClick={increaseQuantity}>+</button>
                   </div>
-                  <button>
+                  <button onClick={addToCartHandler}>
                     Add to Cart
                   </button>
                 </div>

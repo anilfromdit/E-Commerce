@@ -58,7 +58,7 @@ const Products = () => {
       dispatch(clearErrors());
     }
     dispatch(getProduct(keyword, currentPage, price, category, ratings, offer));
-  }, [dispatch, keyword, currentPage, category, ratings, alert, error, offer])
+  }, [dispatch, keyword, currentPage,price, category, ratings, alert, error, offer])
 
   let count = filteredProductsCount;
 
