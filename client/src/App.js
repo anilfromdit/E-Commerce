@@ -34,7 +34,6 @@ function App() {
       }
     });
     dispatch(loadUser());
-    // dispatch(getOffer());
   }, [dispatch]);
 
   return (
