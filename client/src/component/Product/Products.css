@@ -1,120 +1,119 @@
-.productsHeading{
-    margin: 2vmax auto;
-    width:15vw;
-    border-bottom: 1px solid rgba(0,0,0,0.171);
-    padding: 2vmax;
-    color:rgba(0,0,0,0.678);
-    font:500 1.5vmax "Roboto";
-    text-align: center;
+.productsHeading {
+  margin: 2vmax auto;
+  width: 15vw;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+  padding: 2vmax;
+  color: rgba(0, 0, 0, 0.678);
+  font: 500 1.5vmax "Roboto";
+  text-align: center;
 }
 
-.products{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0 5vmax;
-    justify-content: center;
-    min-height: 60vh;
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 5vmax;
+  justify-content: center;
+  min-height: 60vh;
 }
 
-.paginationBox{
-    display: flex;
-    justify-content: center;
-    padding: 6vmax;
+.paginationBox {
+  display: flex;
+  justify-content: center;
+  padding: 6vmax;
 }
 
-.pagination{
-    display: flex;
-    justify-content: center;
-    padding: 0;
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 0;
 }
 
-.page-item{
-    background: white;
-    list-style: none;
-    border : 1px solid rgba(0,0,0,0.178);
-    padding:1vmax 1.5vmax;
-    transition: all 0.3s;
-    cursor: pointer;
+.page-item {
+  background: white;
+  list-style: none;
+  border: 1px solid rgba(0, 0, 0, 0.178);
+  padding: 1vmax 1.5vmax;
+  transition: all 0.3s;
+  cursor: pointer;
 }
 
-.page-item:first-child{
-    border-radius: 5px 0 0 5px;
+.page-item:first-child {
+  border-radius: 5px 0 0 5px;
 }
-.page-item:last-child{
-    border-radius:0 5px 5px 0;
+.page-item:last-child {
+  border-radius: 0 5px 5px 0;
 }
-.page-link{
-    text-decoration: none;
-    font:300 0.7vmax "Roboto";
-    color:rgb(80,80,80);
-    transition: all 0.3s;
-}
-
-.page-item:hover{
-    background: rgb(230,230,230);
+.page-link {
+  text-decoration: none;
+  font: 300 0.7vmax "Roboto";
+  color: rgb(80, 80, 80);
+  transition: all 0.3s;
 }
 
-.page-item:hover .page-link{
-    color:rgb(80, 80, 80);
+.page-item:hover {
+  background: rgb(230, 230, 230);
 }
 
-.pageItemActive{
-    background-color: tomato;
+.page-item:hover .page-link {
+  color: rgb(80, 80, 80);
 }
 
-.pageLinkActive{
-color: white;
+.pageItemActive {
+  background-color: tomato;
 }
 
-.filterBox{
-    width: 10vmax;
-    position: absolute;
-    top: 14vmax;
-    left: 2vmax;
+.pageLinkActive {
+  color: white;
 }
 
-.categoryBox{
-    padding: 0 0;
-    margin: 5px 0;
-    border:1px solid black;
-
-}
-legend{
-    text-align: center;
+.filterBox {
+  width: 10vmax;
+  position: absolute;
+  top: 14vmax;
+  left: 2vmax;
 }
 
-.category-link{
-    list-style:none;
-    color: rgba(0,0,0,0.51);
-    font:400 0.8vmax "Roboto";
-    margin: 0.4vmax;
-    cursor: pointer;
-    transition: all 0.1s;
+.categoryBox {
+  padding: 0 0;
+  margin: 5px 0;
+  border: 1px solid black;
 }
-.category-link:hover{
-    color:rgba(0, 0, 139, 0.795);
-    transform: scale(1.08);
+legend {
+  text-align: center;
+}
+
+.category-link {
+  list-style: none;
+  color: rgba(0, 0, 0, 0.51);
+  font: 400 0.8vmax "Roboto";
+  margin: 0.4vmax;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.category-link:hover {
+  color: rgba(0, 0, 139, 0.795);
+  transform: scale(1.08);
 }
 
 .filterBox > fieldset {
-    border: 1px solid rgb(0, 0, 0);
-  }
+  border: 1px solid rgb(0, 0, 0);
+}
 
-@media screen and (max-width:600px) {
-    .filterBox{
-        width: 20vmax;
-        position: static;
-        margin: auto;
-    }
-    .page-link{
-        font:300 1.7vmax "Roboto";
-    }
-    .category-link {
-        font: 400 1.8vmax "Roboto";
-      }
+@media screen and (max-width: 600px) {
+  .filterBox {
+    width: 20vmax;
+    position: static;
+    margin: auto;
+  }
+  .page-link {
+    font: 300 1.7vmax "Roboto";
+  }
+  .category-link {
+    font: 400 1.8vmax "Roboto";
+  }
 }
 .border {
-    text-align: center;
-    padding: 0 7px;
-    border:1px solid black
-  }
+  text-align: center;
+  padding: 0 7px;
+  border: 1px solid black;
+}

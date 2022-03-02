@@ -1,25 +1,25 @@
-*{
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button{
-    -webkit-appearance: none;
-    margin: 0;
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-input[type=number]{
-    -moz-appearance: textfield;
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
-.greenColor{
-    color:green;
+.greenColor {
+  color: green;
 }
-.redColor{
-    color:red;
+.redColor {
+  color: red;
 }
-:root{
-    --primaryColor:rgba(6, 6, 71, 0.87);
-    --primaryColorHover:rgba(6, 6, 71, 0.712);
+:root {
+  --primaryColor: rgba(6, 6, 71, 0.87);
+  --primaryColorHover: rgba(6, 6, 71, 0.712);
 }

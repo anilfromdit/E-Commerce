@@ -1,25 +1,23 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import "./ProductDetails.css"
-import { useSelector, useDispatch } from "react-redux"
-import { getProductDetails, clearErrors,getProduct } from '../../actions/productActions';
-import { useParams } from 'react-router-dom';
+import React, { Fragment, useEffect, useState } from "react";
+import { Carousel } from "react-responsive-carousel";
+import "./ProductDetails.css";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getProductDetails,
+  clearErrors,
+  getProduct,
+} from "../../actions/productActions";
+import { useParams } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import ReactStars from "react-rating-stars-component"
-import ReviewCard from "./ReviewCard.js"
-import Loader from "../layout/Loader/Loader.js"
-import { useAlert } from "react-alert"
+import ReactStars from "react-rating-stars-component";
+import ReviewCard from "./ReviewCard.js";
+import Loader from "../layout/Loader/Loader.js";
+import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
-import Product from '../Home/ProductCard';
-import { addItemsToCart } from '../../actions/cartAction';
-
-
+import Product from "../Home/ProductCard";
+import { addItemsToCart } from "../../actions/cartAction";
 
 const ProductDetails = () => {
-
-
-
-
   const submitReviewToggle = () => {
     // open ? setOpen(false) : setOpen(true);
   };
@@ -28,8 +26,9 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
-
-  const { product, loading, error } = useSelector((state) => state.productDetails);
+  const { product, loading, error } = useSelector(
+    (state) => state.productDetails
+  );
   const [quantity, setQuantity] = useState(1);
   const options = {
     edit: false,
@@ -52,13 +51,11 @@ const ProductDetails = () => {
     const qty = quantity - 1;
     setQuantity(qty);
   };
-  const { products } = useSelector(
-    (state) => state.products
-  );
-  const addToCartHandler= () =>{
-    dispatch(addItemsToCart(id,quantity));
+  const { products } = useSelector((state) => state.products);
+  const addToCartHandler = () => {
+    dispatch(addItemsToCart(id, quantity));
     alert.success("Item Added To Cart");
-  }
+  };
 
   useEffect(() => {
     if (error) {
@@ -72,15 +69,16 @@ const ProductDetails = () => {
 
   return (
     <Fragment>
-      {
-        loading ? <Loader /> : <Fragment>
-
-
+      {loading ? (
+        <Loader />
+      ) : (
+        <Fragment>
           <MetaData title={`${product.name} | E-Mart`} />
 
           <div className="ProductDetails">
-            <div className='carouselWrapper'>
-              <Carousel className='myCarousel'
+            <div className="carouselWrapper">
+              <Carousel
+                className="myCarousel"
                 autoPlay={true}
                 showArrows={false}
                 infiniteLoop={true}
@@ -97,7 +95,6 @@ const ProductDetails = () => {
                       src={item.url}
                       alt={`${i} Slide`}
                     />
-
                   ))}
               </Carousel>
             </div>
@@ -114,23 +111,27 @@ const ProductDetails = () => {
                 </span>
               </div>
 
-              <div className='detailsBlock-3'>
-                {
-                  product.mrp ? <h4>  &#x20B9;<strike> {`${product.mrp}`} </strike> </h4> : ""
-                }
+              <div className="detailsBlock-3">
+                {product.mrp ? (
+                  <h4>
+                    {" "}
+                    &#x20B9;<strike> {`${product.mrp}`} </strike>{" "}
+                  </h4>
+                ) : (
+                  ""
+                )}
                 <h1> &#x20B9; {`${product.price}`} </h1>
-                <div className='detailsBlock-3-1'>
-                  <div className='detailsBlock-3-1-1'>
+                <div className="detailsBlock-3-1">
+                  <div className="detailsBlock-3-1-1">
                     <button onClick={decreaseQuantity}>-</button>
                     <input readOnly type="number" value={quantity} />
                     <button onClick={increaseQuantity}>+</button>
                   </div>
-                  <button onClick={addToCartHandler}>
-                    Add to Cart
-                  </button>
+                  <button onClick={addToCartHandler}>Add to Cart</button>
                 </div>
 
-                <p>Status:
+                <p>
+                  Status:
                   <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
                     {product.Stock < 1 ? "Out Of Stock" : "In Stock"}
                   </b>
@@ -138,40 +139,33 @@ const ProductDetails = () => {
               </div>
 
               <div className="detailsBlock-4">
-                Short Description  <p>{product.description}</p>
+                Short Description <p>{product.description}</p>
               </div>
-
-
-
             </div>
-
           </div>
           <hr />
-          {product.longProductDescription &&
-            <div className='aboutProduct'>
-              <h4 className='longDescHeading'>About this item</h4>
+          {product.longProductDescription && (
+            <div className="aboutProduct">
+              <h4 className="longDescHeading">About this item</h4>
               <p>
                 {product.longProductDescription.split("..").map((line) => (
                   <ul>
-                    <li>
-                      {line}
-                    </li>
+                    <li>{line}</li>
                   </ul>
                 ))}
-
               </p>
             </div>
-          }
+          )}
           <h3 className="reviewsHeading">REVIEWS</h3>
 
           {product.reviews && product.reviews[0] ? (
-            <div className='reviews'>
-              {product.reviews && product.reviews.map((review) => <ReviewCard review={review} />)}
+            <div className="reviews">
+              {product.reviews &&
+                product.reviews.map((review) => <ReviewCard review={review} />)}
             </div>
           ) : (
-            <p className='noReviews'>No Reviews Yet</p>
-          )
-          }
+            <p className="noReviews">No Reviews Yet</p>
+          )}
           <div id="submitReviewClass">
             <button onClick={submitReviewToggle} className="submitReview">
               Submit A Review
@@ -180,23 +174,19 @@ const ProductDetails = () => {
           <hr />
 
           <div className="productSuggestion">
-            <h3>You may also like
-            </h3>
+            <h3>You may also like</h3>
             <hr />
             <div className="suggestedProducts">
-          {products && products.map((product) => (
-            <Product product={product} key={product._id} />
-          ))}
-        </div>
+              {products &&
+                products.map((product) => (
+                  <Product product={product} key={product._id} />
+                ))}
+            </div>
           </div>
-
-
-
         </Fragment>
-      }
+      )}
     </Fragment>
   );
-
 };
 
 export default ProductDetails;
