@@ -18,6 +18,7 @@ import UpdatePassword from "./component/User/UpdatePassword";
 import ForgotPassword from "./component/User/ForgotPassword";
 import ResetPassword from "./component/User/ResetPassword";
 import Page404 from "./component/Misc/Page404";
+// import Loader from "./component/layout/Loader/Loader";
 // import ProtectedRoute from "./component/Route/ProtectedRoute";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
       <MyNavbar />
       {isAuthenticated && <UserOptions user={user} />}
       <Routes>
+        {/* <Route exact path="/testPreLoader" element={<Loader/>} /> */}
         <Route exact path="/" element={<Home />} />
         <Route exact path="/product/:id" element={<ProductDetails />} />
         <Route exact path="/products" element={<Products />} />
