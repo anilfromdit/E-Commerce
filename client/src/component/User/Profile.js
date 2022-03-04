@@ -1,16 +1,21 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
 import Loader from "../layout/Loader/Loader";
 import { Link } from "react-router-dom";
 import "./Profile.css";
-import LoginSignUp from "./LoginSignUp";
+// import LoginSignUp from "./LoginSignUp";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LockIcon from "@mui/icons-material/Lock";
 
 const Profile = () => {
-  const { user, loading, isAuthenticated } = useSelector((state) => state.user);
-  if (isAuthenticated) {
+  const { user, loading } = useSelector((state) => state.user);
+  useEffect(() => {
+    
+console.log(loading)
+  }, [user,loading])
+  
+  // if (isAuthenticated) {
     return (
       <Fragment>
         {loading ? (
@@ -123,9 +128,9 @@ const Profile = () => {
         )}
       </Fragment>
     );
-  } else {
-    return <LoginSignUp />;
-  }
+  // } else {
+  //   return <LoginSignUp />;
+  // }
 };
 
 export default Profile;

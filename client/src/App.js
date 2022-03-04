@@ -19,7 +19,7 @@ import ForgotPassword from "./component/User/ForgotPassword";
 import ResetPassword from "./component/User/ResetPassword";
 import Page404 from "./component/Misc/Page404";
 // import Loader from "./component/layout/Loader/Loader";
-// import ProtectedRoute from "./component/Route/ProtectedRoute";
+import ProtectedRoute from "./component/Route/ProtectedRoute";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -39,6 +39,9 @@ function App() {
     <Router>
       <MyNavbar />
       {isAuthenticated && <UserOptions user={user} />}
+      
+      <ProtectedRoute exact path="/account" element={<Profile />} />
+      
       <Routes>
         {/* <Route exact path="/testPreLoader" element={<Loader/>} /> */}
         <Route exact path="/" element={<Home />} />
@@ -46,7 +49,6 @@ function App() {
         <Route exact path="/products" element={<Products />} />
         <Route path="/products/:keyword" element={<Products />} />
         <Route path="/products/offer/:offer" element={<Products />} />
-        <Route exact path="/account" element={<Profile />} />
         <Route exact path="/me/update" element={<UpdateProfile />} />
         <Route
           exact
@@ -60,8 +62,9 @@ function App() {
           path="/password/reset/:token"
           element={<ResetPassword />}
         />
-        <Route path="*" element={<Page404 />} />
+        {/* <Route path="*" element={<Page404 />} /> */}
       </Routes>
+      
       <Footer />
     </Router>
   );
