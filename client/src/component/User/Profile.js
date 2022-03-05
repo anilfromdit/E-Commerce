@@ -1,21 +1,33 @@
 import React, { Fragment, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
 import Loader from "../layout/Loader/Loader";
 import { Link } from "react-router-dom";
 import "./Profile.css";
+
+import { useAlert } from "react-alert";
 // import LoginSignUp from "./LoginSignUp";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LockIcon from "@mui/icons-material/Lock";
+import { clearErrors } from "../../actions/userActions";
 
 const Profile = () => {
-  const { user, loading } = useSelector((state) => state.user);
-  useEffect(() => {
-    
-console.log(loading)
-  }, [user,loading])
+  const { user, loading,error } = useSelector((state) => state.user);
   
-  // if (isAuthenticated) {
+  const alert = useAlert();
+  const dispatch= useDispatch();
+  useEffect(() => {
+    if(error){
+      console.log(error);
+      alert.error(error);
+      dispatch(clearErrors());
+      // clearErrors();
+    }
+
+    
+// console.log(loading)
+  }, [user,loading,error,alert])
+  
     return (
       <Fragment>
         {loading ? (
@@ -128,9 +140,6 @@ console.log(loading)
         )}
       </Fragment>
     );
-  // } else {
-  //   return <LoginSignUp />;
-  // }
 };
 
 export default Profile;
