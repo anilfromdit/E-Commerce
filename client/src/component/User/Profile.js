@@ -4,15 +4,14 @@ import MetaData from "../layout/MetaData";
 import Loader from "../layout/Loader/Loader";
 import { Link } from "react-router-dom";
 import "./Profile.css";
-
 import { useAlert } from "react-alert";
-// import LoginSignUp from "./LoginSignUp";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LockIcon from "@mui/icons-material/Lock";
 import { clearErrors } from "../../actions/userActions";
+import LoginSignUp from "./LoginSignUp";
 
 const Profile = () => {
-  const { user, loading,error } = useSelector((state) => state.user);
+  const { user, loading,error,isAuthenticated } = useSelector((state) => state.user);
   
   const alert = useAlert();
   const dispatch= useDispatch();
@@ -21,14 +20,10 @@ const Profile = () => {
       console.log(error);
       alert.error(error);
       dispatch(clearErrors());
-      // clearErrors();
     }
-
-    
-// console.log(loading)
-  }, [user,loading,error,alert])
-  
-    return (
+  }, [error,alert,dispatch])
+  if(isAuthenticated){
+    return ( 
       <Fragment>
         {loading ? (
           <Loader />
@@ -135,11 +130,14 @@ const Profile = () => {
                   )}
                 </div>
               </div>
-            </div>
+            </div> 
           </Fragment>
         )}
       </Fragment>
-    );
+    );}
+    else {
+      return <LoginSignUp />;
+    }
 };
 
 export default Profile;
