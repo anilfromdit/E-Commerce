@@ -20,6 +20,8 @@ import ResetPassword from "./component/User/ResetPassword";
 import Cart from "./component/Cart/Cart";
 import Page404 from "./component/Misc/Page404";
 import Loader from "./component/layout/Loader/Loader";
+import Shipping from "./component/Cart/Shipping"
+import ConfirmOrder from "./component/Cart/ConfirmOrder"
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -52,6 +54,8 @@ function App() {
         />
         <Route exact path="/login" element={<LoginSignUp />} />
         <Route path="/login/:redirect" element={<LoginSignUp />} />
+        <Route exact path="/shipping" element={<Shipping />} />
+        <Route exact path="/order/confirm" element={<ConfirmOrder />} />
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/account" element={<Profile />} />
         <Route exact path="/me/update" element={<UpdateProfile />} />

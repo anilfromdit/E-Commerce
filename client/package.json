@@ -12,6 +12,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.25.0",
+    "country-state-city": "^3.0.1",
     "http-proxy-middleware": "^2.0.3",
     "material-ui-backdrop-component": "^1.0.7",
     "overlay-navbar": "^1.1.1",
