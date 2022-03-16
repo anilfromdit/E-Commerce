@@ -65,6 +65,7 @@ function App() {
         element={<ResetPassword />}
       />
       <Route exact path="/login" element={<LoginSignUp />} />
+      <Route path="/login/:redirect" element={<LoginSignUp />} />
       <Route exact path="/cart" element={<Cart/>} />
       <Route exact path="/account" element={<Profile />} />
       <Route exact path="/me/update" element={<UpdateProfile />} />

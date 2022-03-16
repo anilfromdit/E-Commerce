@@ -33,7 +33,7 @@ const Cart = () => {
     };
   
     const checkoutHandler = () => {
-      window.location.href="/login?redirect=shipping";
+      window.location.href="/login/shipping";
     };
 
   return (

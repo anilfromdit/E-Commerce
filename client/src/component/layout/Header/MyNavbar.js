@@ -15,7 +15,7 @@ const MyNavbar = () => {
   useEffect(() => {
       if(isAuthenticated){
           setText("Profile");
-          setMLink("/profile");
+          setMLink("/account");
         }
         
     }, [isAuthenticated])

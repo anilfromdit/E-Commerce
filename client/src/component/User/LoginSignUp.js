@@ -1,7 +1,7 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
 import "./LoginSignUp.css";
 import Loader from "../layout/Loader/Loader";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import MailIcon from "@mui/icons-material/MailRounded";
 import LockIcon from "@mui/icons-material/LockRounded";
 import FaceIcon from "@mui/icons-material/Face";
@@ -63,15 +63,19 @@ const LoginSignUp = () => {
     }
   };
 
+  const {redirect} = useParams();
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
+      console.log(isAuthenticated)
+      redirect?
+      window.location.href = `/${redirect}`:
       window.location.href = `/account`;
     }
-  }, [dispatch, error, alert, isAuthenticated]);
+  }, [dispatch, error, alert, isAuthenticated,redirect]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {
