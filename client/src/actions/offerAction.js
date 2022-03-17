@@ -11,9 +11,7 @@ export const getOffer = () => async (dispatch) => {
     dispatch({
       type: ALL_OFFERS_REQUEST,
     });
-
     const { data } = await axios.get(`/api/v1/offers`);
-
     dispatch({
       type: ALL_OFFERS_SUCCESS,
       payload: data,
