@@ -25,6 +25,7 @@
     "react-icons": "^3.11.0",
     "react-js-pagination": "^3.0.3",
     "react-pagination": "^1.0.0",
+    "stripe": "^8.209.0",
     "validator": "^13.7.0",
     "webfontloader": "^1.6.28"
   }

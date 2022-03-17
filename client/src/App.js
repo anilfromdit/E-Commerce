@@ -20,8 +20,8 @@ import ResetPassword from "./component/User/ResetPassword";
 import Cart from "./component/Cart/Cart";
 import Page404 from "./component/Misc/Page404";
 import Loader from "./component/layout/Loader/Loader";
-import Shipping from "./component/Cart/Shipping"
-import ConfirmOrder from "./component/Cart/ConfirmOrder"
+import Shipping from "./component/Cart/Shipping";
+import ConfirmOrder from "./component/Cart/ConfirmOrder";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
