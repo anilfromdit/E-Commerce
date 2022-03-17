@@ -17,6 +17,8 @@ import CreditCardIcon from "@mui/icons-material/CreditCard";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import EventIcon from "@mui/icons-material/Event";
 
+import { createOrder, clearErrors } from "../../actions/orderAction";
+
 const Payment = () => {
     
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -29,7 +31,7 @@ const Payment = () => {
 
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
-//   const { error } = useSelector((state) => state.newOrder);
+  const { error } = useSelector((state) => state.newOrder);
 
   const paymentData = {
     amount: Math.round(orderInfo.totalPrice * 100),
@@ -91,7 +93,7 @@ const submitHandler = async (e) => {
             id: result.paymentIntent.id,
             status: result.paymentIntent.status,
           };
-        //   dispatch(createOrder(order));
+          dispatch(createOrder(order));
           window.location.href='/success'
         } else {
           alert.error("There's some issue while processing payment ");
@@ -103,12 +105,12 @@ const submitHandler = async (e) => {
     }
   };
 
-//   useEffect(() => {
-//     if (error) {
-//       alert.error(error);
-//       dispatch(clearErrors());
-//     }
-//   }, [dispatch, error, alert]);
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+  }, [dispatch, error, alert]);
   return (
     <Fragment>
       <MetaData title="Payment" />
