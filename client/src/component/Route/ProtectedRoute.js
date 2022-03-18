@@ -24,6 +24,10 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
                 return <Component {...props} />;
               }
               window.location.href="/login"
+              if(isAuthenticated === false){
+                return <LoginSignUp/>;
+
+              }
 
 
 

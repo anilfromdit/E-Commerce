@@ -56,7 +56,7 @@ const Profile = () => {
               <div>
                 <div className="right">
                   <div className="Wrapper">
-                    <Link to="/orders">
+                    <Link to="/myOrders">
                       <div className="orderIcon">
                         <ShoppingCartIcon />
                       </div>
