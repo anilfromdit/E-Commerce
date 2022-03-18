@@ -4,19 +4,18 @@ import MetaData from "../layout/MetaData";
 import Loader from "../layout/Loader/Loader";
 import { Link } from "react-router-dom";
 import "./Profile.css";
-import LoginSignUp from "./LoginSignUp";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LockIcon from '@mui/icons-material/Lock';
-
 const Profile = () => {
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
-  useEffect(()=>{
-
-  },[isAuthenticated])
-  if (isAuthenticated) {
+  useEffect(() => {
+    if (isAuthenticated === false) {
+window.location.href='/login'      
+    }
+  },[]);
     return (
       <Fragment>
-        {loading ? <Loader /> :
+        { !loading && user? 
           <Fragment>
             <MetaData title={`${user.name}'s Profile`} />
             <div className="mainWrapper">
@@ -108,18 +107,13 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-
-          </Fragment>
+          </Fragment>:
+          <Loader/>
         }
       </Fragment>
 
     );
-  }
-  else {
-    return (
-      <LoginSignUp />
-    )
-  }
+  
 
 };
 

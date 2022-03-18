@@ -61,7 +61,7 @@ const MyOrders = () => {
             sortable: false,
             renderCell: (params) => {
                 return (
-                    <Link to={`/order/${params.getValue(params.id, "id")}`}>
+                    <Link to={`/myOrder/${params.getValue(params.id, "id")}`}>
                         <LaunchIcon />
                     </Link>
                 );

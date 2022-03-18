@@ -70,7 +70,6 @@ const LoginSignUp = () => {
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
-      console.log(isAuthenticated)
       redirect?
       window.location.href = `/${redirect}`:
       window.location.href = `/account`;

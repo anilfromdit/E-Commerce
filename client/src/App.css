@@ -14,10 +14,10 @@ input[type="number"] {
 }
 
 .greenColor {
-  color: green;
+  color: green !important;
 }
 .redColor {
-  color: red;
+  color: red !important;
 }
 :root {
   --primaryColor: rgba(6, 6, 71, 0.87);
