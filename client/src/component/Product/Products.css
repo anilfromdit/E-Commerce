@@ -100,11 +100,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .filterBox {
-    width: 20vmax;
-    position: static;
-    margin: auto;
-  }
   .page-link {
     font: 300 1.7vmax "Roboto";
   }
@@ -112,22 +107,31 @@
     font: 400 1.8vmax "Roboto";
   }
 }
-.sec-center{
+.filterBox{
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  
+}
+.sec-center{
   box-sizing: border-box;
   height: auto;
-  width: 100%;
-  padding: .5vmax 2vmax;
+  width: fit-content;
+  padding: .5vmax;
   justify-content: flex-end;
 }
- [type="checkbox"]:checked,
- [type="checkbox"]:not(:checked) {
-   position: absolute;
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+  position: absolute;
    opacity: 0;
    pointer-events: none;
  }
 .dropdown:checked + label,
-.dropdown:not(:checked) + label {
+.dropdown:not(:checked) + label,
+.dropdownForPrice:checked + label,
+.dropdownForPrice:not(:checked) + label
+{
   line-height: 2;
   transition: all 200ms linear;
   border-radius: 4px;
@@ -139,20 +143,28 @@
   box-shadow: 0 12px 35px 0 rgba(255, 235, 167, 0.15);
   right: 0;
 }
-.section-dropdown {
+.section-dropdown,
+.section-dropdownForPrice {
   position: absolute;
   padding: 5px;
   background-color: white;
   border-radius: 4px;
   display: block;
   box-shadow: 0 14px 35px 0 rgba(9, 9, 12, 0.4);
-  z-index: 2;
+  z-index: 3;
   opacity: 0;
   pointer-events: none;
   transform: translateY(20px);
   transition: all 200ms linear;
 }
-.dropdown:checked ~ .section-dropdown {
+.dropdown:checked ~ .section-dropdown 
+{
+  opacity: 1;
+  transform: translateY(40px);
+  pointer-events: all;
+}
+.dropdownForPrice:checked ~ .section-dropdownForPrice
+{
   opacity: 1;
   transform: translateY(40px);
   pointer-events: all;
@@ -160,10 +172,14 @@
 .uil{
   transform: translateY(5px);
 }
-.dropdown:not(:checked) + label .uil {
+.dropdown:not(:checked) + label .uil,
+.dropdownForPrice:not(:checked) + label .uil
+
+{
   transition: transform 200ms linear;
 }
-.dropdown:checked + label .uil {
+.dropdown:checked + label .uil, 
+.dropdownForPrice:checked + label .uil {
   transform: rotate(180deg) translateY(-5px);
   transition: transform 200ms linear;
 }

@@ -30,7 +30,13 @@ const categories = [
   "Chocolates",
   "Eye Wear",
 ];
-
+const prices = [
+  "0-5000",
+  "5000-15000",
+  "15000-30000",
+  "30000-60000",
+  "60000-150000"
+]
 const Products = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -51,8 +57,11 @@ const Products = () => {
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
   };
-  const priceHandler = (event, newPrice) => {
-    setPrice(newPrice);
+  const priceHandler = (nPrice) => {
+    const newPrice =JSON.stringify(nPrice.price).split("-");
+     const min= (parseInt( newPrice[0].replace(`"`,""),10))
+     const max= (parseInt( newPrice[1].replace(`"`,""),10))
+    setPrice([min,max]);
     dispatch(getProduct(keyword, currentPage, price, category, ratings, offer));
   };
 
@@ -65,8 +74,8 @@ const Products = () => {
   }, [
     dispatch,
     keyword,
-    currentPage,
     price,
+    currentPage,
     category,
     ratings,
     alert,
@@ -84,26 +93,26 @@ const Products = () => {
         <Fragment>
           <MetaData title="Products | E-Mart" />
           <h2 className="productsHeading">Products</h2>
-
-          <div class="sec-center">
-            <input class="dropdown" type="checkbox" id="dropdown" name="dropdown" />
-            <label class="for-dropdown" for="dropdown">Categories <ArrowDropDownIcon className="uil" /> </label>
-            <div class="section-dropdown">
+<div className="filterBox">
+          <div className="sec-center">
+            <input className="dropdown" type="checkbox" id="dropdown" name="dropdown" />
+            <label className="for-dropdown" for="dropdown">Categories <ArrowDropDownIcon className="uil" /> </label>
+            <div className="section-dropdown">
               <ul>
                 <li
                   className="category-link textRight"
+
                   onClick={() => setCategory()}
                 >
                   <ClearIcon
-                    style={{ color: "red",
-                    transform:" translateY(7px) scale(0.8)"
-                  } } />
+                    style={{
+                      color: "red",
+                      transform: " translateY(7px) scale(0.8)"
+                    }} />
                   {"Clear All"}
-                  <hr/>
                 </li>
                 {categories.map((category) => (
-                  <li
-                    className="category-link"
+                  <li className="category-link"
                     key={category}
                     onClick={() => setCategory(category)}
                   >
@@ -114,6 +123,34 @@ const Products = () => {
             </div>
           </div>
 
+          <div className="sec-center">
+            <input className="dropdownForPrice" type="checkbox" id="dropdownForPrice" name="dropdownForPrice" />
+            <label className="for-dropdownForPrice" for="dropdownForPrice">Price <ArrowDropDownIcon className="uil" /> </label>
+            <div className="section-dropdownForPrice">
+              <ul>
+                <li
+                  className="category-link textRight"
+                  onClick={() => setPrice([0,250000])}
+                >
+                  <ClearIcon
+                    style={{
+                      color: "red",
+                      transform: " translateY(7px) scale(0.8)"
+                    }} />
+                  {"Clear All"}
+                </li>
+                {prices.map((price) => (
+                  <li className="category-link"
+                    key={price}
+                    onClick={()=>priceHandler({price})}
+                  >
+                    {price}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          </div>
           <div className="products">
             {products &&
               products.map((product) => (
@@ -174,16 +211,16 @@ const Products = () => {
                 prevPageText="Prev"
                 firstPageText="1st"
                 lastPageText="Last"
-                itemClass="page-item"
-                linkClass="page-link"
-                activeClass="pageItemActive"
-                activeLinkClass="pageLinkActive"
+                itemClassName="page-item"
+                linkClassName="page-link"
+                activeClassName="pageItemActive"
+                activeLinkClassName="pageLinkActive"
               />
             </div>
           )}
         </Fragment>
       }
-    </Fragment>
+    </Fragment >
   );
 };
 
