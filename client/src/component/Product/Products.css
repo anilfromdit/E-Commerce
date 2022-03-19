@@ -112,6 +112,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-end;
+  background-color: #97c6b2;
   
 }
 .sec-center{
@@ -130,7 +131,9 @@
 .dropdown:checked + label,
 .dropdown:not(:checked) + label,
 .dropdownForPrice:checked + label,
-.dropdownForPrice:not(:checked) + label
+.dropdownForPrice:not(:checked) + label,
+.dropdownForRating:checked + label,
+.dropdownForRating:not(:checked) + label
 {
   line-height: 2;
   transition: all 200ms linear;
@@ -144,7 +147,8 @@
   right: 0;
 }
 .section-dropdown,
-.section-dropdownForPrice {
+.section-dropdownForPrice,
+.section-dropdownForRating {
   position: absolute;
   padding: 5px;
   background-color: white;
@@ -157,29 +161,28 @@
   transform: translateY(20px);
   transition: all 200ms linear;
 }
-.dropdown:checked ~ .section-dropdown 
+.dropdown:checked ~ .section-dropdown,
+.dropdownForPrice:checked ~ .section-dropdownForPrice,
+.dropdownForRating:checked ~ .section-dropdownForRating
 {
   opacity: 1;
   transform: translateY(40px);
   pointer-events: all;
 }
-.dropdownForPrice:checked ~ .section-dropdownForPrice
-{
-  opacity: 1;
-  transform: translateY(40px);
-  pointer-events: all;
-}
+
 .uil{
   transform: translateY(5px);
 }
 .dropdown:not(:checked) + label .uil,
-.dropdownForPrice:not(:checked) + label .uil
-
+.dropdownForPrice:not(:checked) + label .uil,
+.dropdownForRating:not(:checked) + label .uil
 {
   transition: transform 200ms linear;
 }
 .dropdown:checked + label .uil, 
-.dropdownForPrice:checked + label .uil {
+.dropdownForPrice:checked + label .uil, 
+.dropdownForRating:checked + label .uil 
+{
   transform: rotate(180deg) translateY(-5px);
   transition: transform 200ms linear;
 }

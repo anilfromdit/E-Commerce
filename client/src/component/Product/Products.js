@@ -37,6 +37,10 @@ const prices = [
   "30000-60000",
   "60000-150000"
 ]
+
+const stars=[
+  1,2,3,4,5
+]
 const Products = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -94,6 +98,7 @@ const Products = () => {
           <MetaData title="Products | E-Mart" />
           <h2 className="productsHeading">Products</h2>
 <div className="filterBox">
+  
           <div className="sec-center">
             <input className="dropdown" type="checkbox" id="dropdown" name="dropdown" />
             <label className="for-dropdown" for="dropdown">Categories <ArrowDropDownIcon className="uil" /> </label>
@@ -150,6 +155,37 @@ const Products = () => {
               </ul>
             </div>
           </div>
+          
+
+          <div className="sec-center">
+            <input className="dropdownForRating" type="checkbox" id="dropdownForRating" name="dropdownForRating" />
+            <label className="for-dropdownForRating" for="dropdownForRating">Rating <ArrowDropDownIcon className="uil" /> </label>
+            <div className="section-dropdownForRating">
+              <ul>
+                <li
+                  className="category-link textRight"
+                  onClick={() => setRatings(0)}
+                >
+                  <ClearIcon
+                    style={{
+                      color: "red",
+                      transform: " translateY(7px) scale(0.8)"
+                    }} />
+                  {"Clear All"}
+                </li>
+                {stars.map((star) => (
+                  <li className="category-link"
+                    key={star}
+                    onClick={()=>setRatings(star)}
+                  >
+                    {star}
+                  </li>
+                ))}
+
+              </ul>
+            </div>
+          </div>
+
           </div>
           <div className="products">
             {products &&
