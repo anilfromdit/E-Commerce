@@ -9,8 +9,9 @@ import Pagination from "react-js-pagination";
 import { useAlert } from "react-alert";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
+import ClearIcon from '@mui/icons-material/Clear';
 import MetaData from "../layout/MetaData";
-
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 const categories = [
   "Computers and Accessories",
   "Furniture",
@@ -77,12 +78,42 @@ const Products = () => {
 
   return (
     <Fragment>
-      {loading ? 
+      {loading ?
         <Loader />
-      : 
+        :
         <Fragment>
           <MetaData title="Products | E-Mart" />
           <h2 className="productsHeading">Products</h2>
+
+          <div class="sec-center">
+            <input class="dropdown" type="checkbox" id="dropdown" name="dropdown" />
+            <label class="for-dropdown" for="dropdown">Categories <ArrowDropDownIcon className="uil" /> </label>
+            <div class="section-dropdown">
+              <ul>
+                <li
+                  className="category-link textRight"
+                  onClick={() => setCategory()}
+                >
+                  <ClearIcon
+                    style={{ color: "red",
+                    transform:" translateY(7px) scale(0.8)"
+                  } } />
+                  {"Clear All"}
+                  <hr/>
+                </li>
+                {categories.map((category) => (
+                  <li
+                    className="category-link"
+                    key={category}
+                    onClick={() => setCategory(category)}
+                  >
+                    {category}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
           <div className="products">
             {products &&
               products.map((product) => (
@@ -90,7 +121,7 @@ const Products = () => {
               ))}
           </div>
 
-          <div className="filterBox">
+          {/* <div className="filterBox">
             <div className="border">
               <Typography>Price</Typography>
               <Slider
@@ -130,7 +161,7 @@ const Products = () => {
                 max={5}
               />
             </div>
-          </div>
+          </div> */}
 
           {resultPerPage < count && (
             <div className="paginationBox">

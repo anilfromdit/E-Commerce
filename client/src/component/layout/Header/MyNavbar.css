@@ -15,7 +15,6 @@
 nav{
     background: rgba(6, 6, 71, 0.87);
     height: 64px;
-    width: 100vw;
     max-width: 100%;
     color: white;
     display: flex;
