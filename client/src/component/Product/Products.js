@@ -7,11 +7,10 @@ import ProductCard from "../Home/ProductCard";
 import { useParams } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import { useAlert } from "react-alert";
-import Slider from "@material-ui/core/Slider";
-import Typography from "@material-ui/core/Typography";
 import ClearIcon from '@mui/icons-material/Clear';
 import MetaData from "../layout/MetaData";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+
 const categories = [
   "Computers and Accessories",
   "Furniture",
@@ -98,7 +97,7 @@ const Products = () => {
           <MetaData title="Products | E-Mart" />
           <h2 className="productsHeading">Products</h2>
 <div className="filterBox">
-  
+
           <div className="sec-center">
             <input className="dropdown" type="checkbox" id="dropdown" name="dropdown" />
             <label className="for-dropdown" for="dropdown">Categories <ArrowDropDownIcon className="uil" /> </label>
