@@ -193,48 +193,6 @@ const Products = () => {
               ))}
           </div>
 
-          {/* <div className="filterBox">
-            <div className="border">
-              <Typography>Price</Typography>
-              <Slider
-                size="large"
-                value={price}
-                onChange={priceHandler}
-                valueLabelDisplay="auto"
-                aria-labelledby="continuous-slider"
-                min={0}
-                max={150000}
-              />
-            </div>
-            <div className="categoryBox">
-              <Typography component="legend">Categories</Typography>
-              <ul>
-                {categories.map((category) => (
-                  <li
-                    className="category-link"
-                    key={category}
-                    onClick={() => setCategory(category)}
-                  >
-                    {category}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="border">
-              <Typography>Ratings</Typography>
-              <Slider
-                value={ratings}
-                onChange={(e, newRating) => {
-                  setRatings(newRating);
-                }}
-                aria-labelledby="continuous-slider"
-                valueLabelDisplay="auto"
-                min={0}
-                max={5}
-              />
-            </div>
-          </div> */}
-
           {resultPerPage < count && (
             <div className="paginationBox">
               <Pagination
