@@ -24,6 +24,15 @@ exports.getProductDetails = handleAsync(async (req, res, next) => {
   });
 });
 
+exports.getAdminProducts = handleAsync(async (req, res, next) => {
+  const products = await Product.find();
+
+  res.status(200).json({
+    success: true,
+    products,
+  });
+});
+
 //get all products
 exports.getAllProducts = handleAsync(async (req, res, next) => {
   const resultPerPage = 12;

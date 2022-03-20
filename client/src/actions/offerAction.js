@@ -9,7 +9,7 @@ import {
 export const getOffer = () => async (dispatch) => {
   try {
     dispatch({
-      type: ALL_OFFERS_REQUEST,
+      type: ALL_OFFERS_REQUEST, 
     });
     const { data } = await axios.get(`/api/v1/offers`);
     dispatch({

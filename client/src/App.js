@@ -26,6 +26,7 @@ import Payment from "./component/Cart/Payment";
 import OrderSuccess from "./component/Cart/OrderSuccess";
 import MyOrders from "./component/Order/MyOrders";
 import OrderDetails from "./component/Order/OrderDetails";
+import Dashboard from "./component/Admin/Dashboard";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
@@ -85,6 +86,7 @@ function App() {
         <Route exact path="/myOrders" element={<MyOrders />} />
         <Route exact path="/myOrder/:id" element={<OrderDetails />} />
         <Route exact path="/me/update" element={<UpdateProfile />} />
+        <Route exact path='/admin/dashboard' element={<Dashboard/>}/>
         <Route
           exact
           path="/password/updatePassword"
