@@ -159,7 +159,7 @@ const UpdateProduct = () => {
             encType="multipart/form-data"
             onSubmit={updateProductSubmitHandler}
           >
-            <h1>Create Product</h1>
+            <h1>Update Product</h1>
 
             <div>
               <SpellcheckIcon />
@@ -188,6 +188,7 @@ const UpdateProduct = () => {
                 type="number"
                 placeholder="MRP"
                 required
+                value={mrp}
                 onChange={(e) => setMRP(e.target.value)}
               />
             </div>
@@ -198,6 +199,7 @@ const UpdateProduct = () => {
                 type="number"
                 placeholder="our price"
                 required
+                value={price}
                 onChange={(e) => setPrice(e.target.value)}
               />
             </div>
@@ -238,8 +240,8 @@ const UpdateProduct = () => {
 
             <div>
               <AccountTreeIcon style={{ color: "#4141b1" }} />
-              <select onChange={(e) => setCategory(e.target.value)}>
-                <option value="">Choose Category</option>
+              <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                <option value=""></option>
                 {categories.map((cate) => (
                   <option key={cate} value={cate}>
                     {cate}
@@ -264,9 +266,11 @@ const UpdateProduct = () => {
                 type="number"
                 placeholder="Stock"
                 required
+                value={Stock}
                 onChange={(e) => setStock(e.target.value)}
               />
             </div>
+
 
             <div id="createProductFormFile">
               <input
@@ -276,6 +280,13 @@ const UpdateProduct = () => {
                 onChange={updateProductImagesChange}
                 multiple
               />
+            </div>
+
+            <div id="createProductFormImage">
+              {oldImages &&
+                oldImages.map((image, index) => (
+                  <img key={index} src={image.url} alt="Old Product Preview" />
+                ))}
             </div>
 
             <div id="createProductFormImage">

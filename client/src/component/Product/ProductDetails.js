@@ -181,7 +181,7 @@ const ProductDetails = () => {
             <div className="aboutProduct">
               <h4 className="longDescHeading">About this item</h4>
               <p>
-                {product.longProductDescription.split("..").map((line) => (
+                {product.longProductDescription.split(`\n`).map((line) => (
                   <ul>
                     <li>{line}</li>
                   </ul>
