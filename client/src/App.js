@@ -38,6 +38,8 @@ function App() {
 
   async function getStripeApiKey() {
     const { data } = await axios.get("/api/v1/stripeapikey");
+    // const data = "pk_test_51KeNVKSHkh1FaTRBUHU7BBCniZDlqlPUTb09ma5sowyLCLYgrNkn7vA0RzS7PS1Si0DdYn1yBzmfJblR43RtNO8A00876dQ2Vb"
+
 
     setStripeApiKey(data.stripeApiKey);
   }

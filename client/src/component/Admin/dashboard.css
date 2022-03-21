@@ -7,9 +7,9 @@
   }
   
   .dashboardContainer {
-    border-left: 1px solid rgba(0, 0, 0, 0.13);
+    border-left: 1px solid black;
     background-color: rgb(255, 255, 255);
-    padding: 3rem 0;
+    padding: 2rem 0;
   }
   
   .dashboardContainer > h1 {
@@ -31,7 +31,7 @@
     justify-content: center;
   }
   .dashboardSummary > div > p {
-    background-color: rgba(70, 117, 218, 0.932);
+    background-color: var(--primaryColor);
     color: white;
     font: 300 1.3rem "Roboto";
     text-align: center;
@@ -55,14 +55,20 @@
     align-items: center;
     flex-direction: column;
   }
-  
+
+  .dashboardSummaryBox2 > a {
+    transition: all 1s;
+  }
   .dashboardSummaryBox2 > a:first-child {
-    background-color: rgb(255, 110, 110);
+    background-color: rgb(99, 139, 188);
     color: rgb(255, 255, 255);
+  }
+  .dashboardSummaryBox2 > a:hover {
+    transform: scale(1.2);
   }
   
   .dashboardSummaryBox2 > a:last-child {
-    background-color: rgb(51, 51, 51);
+    background-color: rgb(172, 112, 95);
     color: rgb(255, 255, 255);
   }
   

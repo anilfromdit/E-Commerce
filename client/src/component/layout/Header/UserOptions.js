@@ -51,7 +51,7 @@ const UserOptions = ({ user }) => {
     window.location.href = `/cart`;
   }
   function dashboard() {
-    window.location.href = `/dashboard`;
+    window.location.href = `/admin/dashboard`;
   }
   function logoutUser() {
     dispatch(logout());
