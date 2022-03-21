@@ -22,11 +22,6 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please Enter Product Brand"],
   },
-  insideBox: [
-    {
-      item: String,
-    },
-  ],
   price: {
     type: Number,
     required: [true, "Please Enter Product Price"],

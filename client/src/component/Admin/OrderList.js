@@ -61,8 +61,8 @@ const OrderList = () => {
           flex: 0.5,
           cellClassName: (params) => {
             return params.getValue(params.id, "status") === "Delivered"
-              ? "greenColor"
-              : "redColor";
+              ? "greenColor allCaps"
+              : "redColor allCaps";
           },
         },
         {

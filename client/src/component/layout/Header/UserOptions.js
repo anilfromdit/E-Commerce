@@ -39,7 +39,7 @@ const UserOptions = ({ user }) => {
   }
 
   function orders() {
-    window.location.href = `/orders`;
+    window.location.href = `/myOrders`;
   }
   function home() {
     window.location.href = `/`;

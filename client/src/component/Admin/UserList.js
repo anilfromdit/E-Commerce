@@ -67,8 +67,8 @@ const UserList = () => {
           flex: 0.4,
           cellClassName: (params) => {
             return params.getValue(params.id, "role") === "admin"
-              ? "greenColor"
-              : "blackColor";
+              ? "greenColor allCaps"
+              : "blackColor allCaps";
           },
         },
     
@@ -83,12 +83,12 @@ const UserList = () => {
           field: "contact",
           headerName: "Contact",
           minWidth: 270,
-          flex: 0.5,
+          flex: 0.3,
         },
     
         {
           field: "actions",
-          flex: 0.3,
+          flex: 0.1,
           headerName: "Actions",
           minWidth: 150,
           type: "number",

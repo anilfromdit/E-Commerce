@@ -22,6 +22,9 @@ input[type="number"] {
 .blackColor {
   color: black !important;
 }
+.allCaps{
+  text-transform: capitalize !important;
+}
 :root {
   --primaryColor: rgba(6, 6, 71, 0.87);
   --primaryColorHover: rgba(6, 6, 71, 0.712);
