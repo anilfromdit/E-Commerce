@@ -30,7 +30,7 @@ const reducer = combineReducers({
   newReview:newReviewReducer,
   allOrders:allOrdersReducer,
   allUsers:allUsersReducer,
-  product:productReducer
+  // product:productReducer
 
 
 });
