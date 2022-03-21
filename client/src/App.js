@@ -28,6 +28,7 @@ import MyOrders from "./component/Order/MyOrders";
 import OrderDetails from "./component/Order/OrderDetails";
 import Dashboard from "./component/Admin/Dashboard";
 import ProductList from "./component/Admin/ProductList";
+import UpdateProduct from "./component/Admin/UpdateProduct.js";
 import OrderList from "./component/Admin/OrderList";
 import UserList from "./component/Admin/UserList";
 import NewProduct from "./component/Admin/NewProduct";
@@ -91,6 +92,7 @@ function App() {
         <Route exact path="/me/update" element={<UpdateProfile />} />
         <Route exact path='/admin/dashboard' element={<Dashboard/>}/>
         <Route exact path='/admin/products' element={<ProductList/>}/>
+        <Route exact path='/admin/product/:id' element={<UpdateProduct/>}/>
         <Route exact path='/admin/newProduct' element={<NewProduct/>}/>
         <Route exact path='/admin/orders' element={<OrderList/>}/>
         <Route exact path='/admin/users' element={<UserList/>}/>
