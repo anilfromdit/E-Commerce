@@ -4,8 +4,8 @@ import "./productList.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
-  getAllOrders
-} from "../../actions/orderAction";
+  getAllUsers
+} from "../../actions/userActions";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { Button } from "@mui/material";
@@ -15,13 +15,12 @@ import EditIcon from '@mui/icons-material/Edit';
 import SideBar from "./Sidebar";
 // import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 
-const OrderList = () => {
-
+const UserList = () => {
     const dispatch = useDispatch();
 
     const alert = useAlert();
   
-    const { error, orders } = useSelector((state) => state.allOrders);
+    const { error, users } = useSelector((state) => state.allUsers);
   
     // const { error: deleteError, isDeleted } = useSelector(
     //   (state) => state.product
@@ -48,35 +47,41 @@ const OrderList = () => {
     //     dispatch({ type: DELETE_PRODUCT_RESET });
     //   }
   
-      dispatch(getAllOrders());
+      dispatch(getAllUsers());
     }, [dispatch, alert, error]);
   
     const columns = [
-        { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
+        { field: "id", headerName: "User ID", minWidth: 300, flex: 1 },
     
         {
-          field: "status",
-          headerName: "Status",
+          field: "name",
+          headerName: "Name",
           minWidth: 150,
           flex: 0.5,
-          cellClassName: (params) => {
-            return params.getValue(params.id, "status") === "Delivered"
-              ? "greenColor"
-              : "redColor";
-          },
+          
         },
         {
-          field: "itemsQty",
-          headerName: "Items Qty",
-          type: "number",
+          field: "role",
+          headerName: "Role",
           minWidth: 150,
           flex: 0.4,
+          cellClassName: (params) => {
+            return params.getValue(params.id, "role") === "admin"
+              ? "greenColor"
+              : "blackColor";
+          },
         },
     
         {
-          field: "amount",
-          headerName: "Amount",
-          type: "number",
+          field: "email",
+          headerName: "Email",
+          minWidth: 270,
+          flex: 0.5,
+        },
+    
+        {
+          field: "contact",
+          headerName: "Contact",
           minWidth: 270,
           flex: 0.5,
         },
@@ -111,23 +116,25 @@ const OrderList = () => {
     
       const rows = [];
     
-      orders &&
-        orders.forEach((item) => {
+      users &&
+        users.forEach((item) => {
           rows.push({
             id: item._id,
-            itemsQty: item.orderItems.length,
-            amount:`₹${item.totalPrice}` ,
-            status: item.orderStatus,
+            name:item.name,
+            email:item.email,
+            contact:item.contactNumber,
+            role:item.role,
           });
         });
+ 
   return (
     <Fragment>
-    <MetaData title={`All Orders`} />
+    <MetaData title={`All USERS`} />
 
     <div className="dashboard">
       <SideBar />
       <div className="productListContainer">
-        <h1 id="productListHeading">ALL ORDERS</h1>
+        <h1 id="productListHeading">ALL USERS</h1>
 
         <DataGrid
           rows={rows}
@@ -143,4 +150,4 @@ const OrderList = () => {
   )
 }
 
-export default OrderList
+export default UserList

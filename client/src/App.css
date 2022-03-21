@@ -19,6 +19,9 @@ input[type="number"] {
 .redColor {
   color: red !important;
 }
+.blackColor {
+  color: black !important;
+}
 :root {
   --primaryColor: rgba(6, 6, 71, 0.87);
   --primaryColorHover: rgba(6, 6, 71, 0.712);
