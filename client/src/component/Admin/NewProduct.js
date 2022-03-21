@@ -13,6 +13,7 @@ import SpellcheckIcon from '@mui/icons-material/Spellcheck';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import SellIcon from '@mui/icons-material/Sell';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import SideBar from "./Sidebar";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 
@@ -28,7 +29,7 @@ const NewProduct = () => {
     const [mrp, setMRP] = useState(0);
     const [warranty, setWarranty] = useState("");
     const [brand, setBrand] = useState("");
-    // const [offer, setOffer] = useState("");
+    const [offer, setOffer] = useState("");
     const [longProductDescription,setLongProductDescription]=useState("")
     const [category, setCategory] = useState("");
     const [Stock, setStock] = useState(0);
@@ -83,7 +84,7 @@ const NewProduct = () => {
       myForm.set("mrp", mrp);
       myForm.set("warranty", warranty);
       myForm.set("brand", brand);
-    //   myForm.set("offer", offer);
+      myForm.set("offer", offer);
       myForm.set("longProductDescription", longProductDescription);
   
       images.forEach((image) => {
@@ -200,7 +201,6 @@ const NewProduct = () => {
             />
           </div>
 
-
           <div>
             <AccountTreeIcon style={{color:"#4141b1"}}/>
             <select onChange={(e) => setCategory(e.target.value)}>
@@ -211,6 +211,16 @@ const NewProduct = () => {
                 </option>
               ))}
             </select>
+          </div>
+
+          <div>
+            <LocalOfferIcon style={{color:"#2c977e"}} />
+            <input
+              type="text"
+              placeholder="offer"
+              value={offer}
+              onChange={(e) => setOffer(e.target.value)}
+            />
           </div>
 
           <div>
