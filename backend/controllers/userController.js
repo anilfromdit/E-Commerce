@@ -181,6 +181,7 @@ exports.updateProfile = handleAsync(async (req, res, next) => {
   const newUserData = {
     name: req.body.name,
     email: req.body.email,
+    contactNumber:req.body.contactNumber
   };
   if (req.body.avatar !== "") {
     const user = await User.findById(req.user.id);

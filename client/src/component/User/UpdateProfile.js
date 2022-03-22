@@ -10,6 +10,7 @@ import {
   clearErrors,
 } from "../../actions/userActions";
 import { useAlert } from "react-alert";
+import CallIcon from '@mui/icons-material/Call';
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
 import MetaData from "../layout/MetaData";
 
@@ -22,6 +23,7 @@ const UpdateProfile = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
   const [avatar, setAvatar] = useState("");
   const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
 
@@ -30,6 +32,7 @@ const UpdateProfile = () => {
     const myForm = new FormData();
     myForm.set("name", name);
     myForm.set("email", email);
+    myForm.set("contactNumber", contactNumber);
     myForm.set("avatar", avatar);
     dispatch(updateProfile(myForm));
   };
@@ -50,6 +53,7 @@ const UpdateProfile = () => {
     if (user) {
       setName(user.name);
       setEmail(user.email);
+      setContactNumber(user.contactNumber)
       setAvatarPreview(user.avatar.url);
     }
     if (error) {
@@ -105,6 +109,18 @@ const UpdateProfile = () => {
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
+
+                  <div className="signUpContactNumber signUpEmail">
+                  <CallIcon />
+                  <input
+                    type="number"
+                    required
+                    placeholder="Contact Number"
+                    name="contactNumber"
+                    value={contactNumber}
+                    onChange={(e) => setContactNumber(e.target.value)}
+                  />
+                </div>
 
                   <div id="updateProfileImage">
                     <img src={avatarPreview} alt="Avatar Preview" />
