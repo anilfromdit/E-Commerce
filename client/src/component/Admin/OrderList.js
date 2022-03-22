@@ -4,7 +4,8 @@ import "./productList.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
-  getAllOrders
+  getAllOrders,
+  deleteOrder
 } from "../../actions/orderAction";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
@@ -13,7 +14,8 @@ import MetaData from "../layout/MetaData";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import SideBar from "./Sidebar";
-// import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
+import { DELETE_ORDER_RESET } from "../../constants/orderConstant";
+import Loader from "../layout/Loader/Loader";
 
 const OrderList = () => {
 
@@ -23,13 +25,13 @@ const OrderList = () => {
   
     const { error, orders } = useSelector((state) => state.allOrders);
   
-    // const { error: deleteError, isDeleted } = useSelector(
-    //   (state) => state.product
-    // );
+    const { error: deleteError, isDeleted } = useSelector(
+      (state) => state.order
+    );
   
-    // const deleteProductHandler = (id) => {
-    //   dispatch(deleteProduct(id));
-    // };
+    const deleteOrderHandler = (id) => {
+      dispatch(deleteOrder(id));
+    };
   
     useEffect(() => {
       if (error) {
@@ -37,19 +39,19 @@ const OrderList = () => {
         dispatch(clearErrors());
       }
   
-    //   if (deleteError) {
-    //     alert.error(deleteError);
-    //     dispatch(clearErrors());
-    //   }
+      if (deleteError) {
+        alert.error(deleteError);
+        dispatch(clearErrors());
+      }
   
-    //   if (isDeleted) {
-    //     alert.success("Product Deleted Successfully");
-    //     history.push("/admin/dashboard");
-    //     dispatch({ type: DELETE_PRODUCT_RESET });
-    //   }
+      if (isDeleted) {
+        alert.success("Order Deleted Successfully");
+        window.location.href="/admin/orders";
+        dispatch({ type: DELETE_ORDER_RESET });
+      }
   
       dispatch(getAllOrders());
-    }, [dispatch, alert, error]);
+    }, [dispatch, alert, error,deleteError,isDeleted]);
   
     const columns = [
         { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
@@ -96,10 +98,9 @@ const OrderList = () => {
                 </Link>
     
                 <Button
-                //   onClick={() =>
-                //     deleteOrderHandler(params.getValue(params.id, "id"))
-                //   }
-                  onClick={()=>{}}
+                  onClick={() =>
+                    deleteOrderHandler(params.getValue(params.id, "id"))
+                  }
                 >
                   <DeleteIcon />
                 </Button>
@@ -126,8 +127,12 @@ const OrderList = () => {
 
     <div className="dashboard">
       <SideBar />
+
+      { orders ?
+        <>
       <div className="productListContainer">
         <h1 id="productListHeading">ALL ORDERS</h1>
+
 
         <DataGrid
           rows={rows}
@@ -138,6 +143,9 @@ const OrderList = () => {
           autoHeight
         />
       </div>
+      </>
+      : <Loader/>
+      }
     </div>
   </Fragment>
   )
