@@ -90,7 +90,7 @@ const ConfirmOrder = () => {
                   </div>
                   <div>
                     <p>GST:</p>
-                    <span>₹{tax}</span>
+                    <span>₹{Math.round(tax)}</span>
                   </div>
                 </div>
 
