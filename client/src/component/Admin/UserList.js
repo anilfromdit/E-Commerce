@@ -55,20 +55,20 @@ const UserList = () => {
     }, [dispatch, alert, error, deleteError,isDeleted, message]);
   
     const columns = [
-        { field: "id", headerName: "User ID", minWidth: 180, flex: 0.8 },
+        { field: "id", headerName: "User ID", minWidth: 250, flex: 1 },
     
         {
           field: "name",
           headerName: "Name",
-          minWidth: 150,
-          flex: 0.5,
+          minWidth: 180,
+          flex: 0.6,
           
         },
         {
           field: "role",
           headerName: "Role",
           minWidth: 150,
-          flex: 0.4,
+          flex: 0.5,
           cellClassName: (params) => {
             return params.getValue(params.id, "role") === "admin"
               ? "greenColor allCaps"
@@ -79,22 +79,23 @@ const UserList = () => {
         {
           field: "email",
           headerName: "Email",
-          minWidth: 270,
-          flex: 1,
+          minWidth: 200,
+          flex: 1.1
         },
     
         {
           field: "contact",
           headerName: "Contact",
-          minWidth: 270,
-          flex: 0.3,
+          minWidth: 200,
+          flex: 0.7,
         },
     
         {
           field: "actions",
-          flex: 0.1,
+          flex: 0.4,
           headerName: "Actions",
           minWidth: 150,
+          maxWidth:150,
           type: "number",
           sortable: false,
           renderCell: (params) => {

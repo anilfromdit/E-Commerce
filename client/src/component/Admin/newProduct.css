@@ -19,12 +19,13 @@
     align-items: center;
     margin: auto;
     padding: 3vmax;
-    justify-content: space-evenly;
+    justify-content: center;
     min-height: 100vh;
     width: 80vw;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.267);
   }
+  
   
   .createProductForm  div {
     display: flex;
@@ -99,12 +100,13 @@ margin-left: 8vmax;
     background-color: var(--primaryColor);
     color: white;
     font: 300 0.9vmax "Roboto";
-    width: 100%;
+    width: 20%;
     padding: 0.8vmax;
     cursor: pointer;
     transition: all 0.5s;
     border-radius: 4px;
     outline: none;
+    margin: 2vmax;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
   }
   
@@ -125,6 +127,7 @@ margin-left: 8vmax;
     .createProductForm > div > textarea {
       padding: 2.5vmax 5vmax;
       font: 300 1.7vmax cursive;
+
     }
   
     .createProductForm > div > svg {

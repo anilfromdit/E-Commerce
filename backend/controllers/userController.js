@@ -233,12 +233,13 @@ exports.getSingleUser = handleAsync(async (req, res, next) => {
   });
 });
 
-//modify user profile(name,email,role) --Admin
+//modify user profile(name,email,role,contactNumber) --Admin
 exports.updateUserProfile = handleAsync(async (req, res, next) => {
   const newUserData = {
     name: req.body.name,
     email: req.body.email,
     role: req.body.role,
+    contactNumber:req.body.contactNumber
   };
 
   const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
