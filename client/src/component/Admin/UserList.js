@@ -4,7 +4,8 @@ import "./productList.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
-  getAllUsers
+  getAllUsers,
+  deleteUser
 } from "../../actions/userActions";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
@@ -13,7 +14,7 @@ import MetaData from "../layout/MetaData";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import SideBar from "./Sidebar";
-// import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
+import { DELETE_USER_RESET } from "../../constants/userConstants";
 
 const UserList = () => {
     const dispatch = useDispatch();
@@ -22,13 +23,16 @@ const UserList = () => {
   
     const { error, users } = useSelector((state) => state.allUsers);
   
-    // const { error: deleteError, isDeleted } = useSelector(
-    //   (state) => state.product
-    // );
+    const {
+      error: deleteError,
+      isDeleted,
+      message,
+    } = useSelector((state) => state.profile);
   
-    // const deleteProductHandler = (id) => {
-    //   dispatch(deleteProduct(id));
-    // };
+    const deleteUserHandler = (id) => {
+      dispatch(deleteUser(id));
+    };
+  
   
     useEffect(() => {
       if (error) {
@@ -36,22 +40,22 @@ const UserList = () => {
         dispatch(clearErrors());
       }
   
-    //   if (deleteError) {
-    //     alert.error(deleteError);
-    //     dispatch(clearErrors());
-    //   }
+      if (deleteError) {
+        alert.error(deleteError);
+        dispatch(clearErrors());
+      }
   
-    //   if (isDeleted) {
-    //     alert.success("Product Deleted Successfully");
-    //     history.push("/admin/dashboard");
-    //     dispatch({ type: DELETE_PRODUCT_RESET });
-    //   }
+      if (isDeleted) {
+        alert.success(message);
+        window.location.href="/admin/users"; 
+        dispatch({ type: DELETE_USER_RESET });
+      }
   
       dispatch(getAllUsers());
-    }, [dispatch, alert, error]);
+    }, [dispatch, alert, error, deleteError,isDeleted, message]);
   
     const columns = [
-        { field: "id", headerName: "User ID", minWidth: 300, flex: 1 },
+        { field: "id", headerName: "User ID", minWidth: 180, flex: 0.8 },
     
         {
           field: "name",
@@ -76,7 +80,7 @@ const UserList = () => {
           field: "email",
           headerName: "Email",
           minWidth: 270,
-          flex: 0.5,
+          flex: 1,
         },
     
         {
@@ -96,15 +100,14 @@ const UserList = () => {
           renderCell: (params) => {
             return (
               <Fragment>
-                <Link to={`/admin/order/${params.getValue(params.id, "id")}`}>
+                <Link to={`/admin/user/${params.getValue(params.id, "id")}`}>
                   <EditIcon />
                 </Link>
     
                 <Button
-                //   onClick={() =>
-                //     deleteOrderHandler(params.getValue(params.id, "id"))
-                //   }
-                  onClick={()=>{}}
+                onClick={() =>
+                  deleteUserHandler(params.getValue(params.id, "id"))
+                }
                 >
                   <DeleteIcon />
                 </Button>
