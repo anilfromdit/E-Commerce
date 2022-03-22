@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import MailIcon from "@mui/icons-material/MailRounded";
 import LockIcon from "@mui/icons-material/LockRounded";
 import FaceIcon from "@mui/icons-material/Face";
+import CallIcon from '@mui/icons-material/Call';
 import { useDispatch, useSelector } from "react-redux";
 import { login, clearErrors, register } from "../../actions/userActions";
 import { useAlert } from "react-alert";
@@ -27,8 +28,9 @@ const LoginSignUp = () => {
     name: "",
     email: "",
     password: "",
+    contactNumber:""
   });
-  const { name, email, password } = user;
+  const { name, email, password,contactNumber } = user;
   const [avatar, setAvatar] = useState("/Profile.png");
   const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
 
@@ -44,6 +46,11 @@ const LoginSignUp = () => {
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("avatar", avatar);
+    if(contactNumber<999999999){
+      alert.error("Enter A Valid Contact Number");
+      return
+    }
+    myForm.set("contactNumber",contactNumber);
     dispatch(register(myForm));
   };
 
@@ -154,6 +161,17 @@ const LoginSignUp = () => {
                     required
                     name="email"
                     value={email}
+                    onChange={registerDataChange}
+                  />
+                </div>
+                <div className="signUpContactNumber signUpEmail">
+                  <CallIcon />
+                  <input
+                    type="number"
+                    required
+                    placeholder="Contact Number (optional)"
+                    name="contactNumber"
+                    value={contactNumber}
                     onChange={registerDataChange}
                   />
                 </div>

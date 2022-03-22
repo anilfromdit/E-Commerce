@@ -9,20 +9,36 @@ const sendEmail = require("../utils/sendEmail");
 
 // Creating a user account
 exports.registerUser = handleAsync(async (req, res, next) => {
+
+  console.log(req.body.avatar)
+  let my_public_id;
+  let my_url;
+  if(req.body.avatar!=="/Profile.png"){
   const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
     folder: "profilePics",
     width: 150,
     crop: "scale",
   });
+  my_public_id=myCloud.public_id;
+  my_url=myCloud.secure_url
+}
+  const { name, email, password,contactNumber } = req.body;
+  
+  if(!my_public_id){
+ my_public_id="profilePics/mbkx5p4bbazbkg4ddy76";
+ my_url="https://res.cloudinary.com/gulatianil410/image/upload/v1645982228/profilePics/mbkx5p4bbazbkg4ddy76.jpg"
+  }
+  else{
 
-  const { name, email, password } = req.body;
+  }
   const user = await User.create({
     name,
     email,
     password,
+    contactNumber,
     avatar: {
-      public_id: myCloud.public_id,
-      url: myCloud.secure_url,
+      public_id: my_public_id,
+      url: my_url,
     },
   });
 
