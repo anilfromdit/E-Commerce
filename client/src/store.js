@@ -7,6 +7,8 @@ import {
   productDetailsReducer,
   newReviewReducer,
   newProductReducer,
+  productReviewsReducer,
+  reviewReducer,
 } from "./reducers/productReducer";
 import {
   allUsersReducer,
@@ -27,17 +29,18 @@ const reducer = combineReducers({
   profile: profileReducer,
   forgotPassword: forgotPasswordReducer,
   cart: cartReducer,
-  newOrder:newOrderReducer,
-  myOrders:myOrdersReducer,
-  orderDetails:orderDetailsReducer,
-  newReview:newReviewReducer,
-  allOrders:allOrdersReducer,
-  allUsers:allUsersReducer,
-  newProduct:newProductReducer,
-  product:productReducer,
-  order:orderReducer,
-  userDetails:userDetailsReducer,
-
+  newOrder: newOrderReducer,
+  myOrders: myOrdersReducer,
+  orderDetails: orderDetailsReducer,
+  newReview: newReviewReducer,
+  allOrders: allOrdersReducer,
+  allUsers: allUsersReducer,
+  newProduct: newProductReducer,
+  product: productReducer,
+  order: orderReducer,
+  userDetails: userDetailsReducer,
+  productReviews: productReviewsReducer,
+  review: reviewReducer
 
 });
 let initialState = {
@@ -45,7 +48,7 @@ let initialState = {
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
       : [],
-      shippingInfo:localStorage.getItem("shippingInfo")
+    shippingInfo: localStorage.getItem("shippingInfo")
       ? JSON.parse(localStorage.getItem("shippingInfo"))
       : {},
   },

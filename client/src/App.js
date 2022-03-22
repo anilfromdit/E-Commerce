@@ -34,6 +34,7 @@ import UserList from "./component/Admin/UserList";
 import NewProduct from "./component/Admin/NewProduct";
 import UpdateOrder from "./component/Admin/UpdateOrder";
 import UpdateUser from "./component/Admin/UpdateUser";
+import ProductReviews from "./component/Admin/ProductReviews";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
@@ -58,11 +59,10 @@ function App() {
     store.dispatch(loadUser());
     getStripeApiKey();
   }, []);
-
+  window.addEventListener("contextmenu",(e)=>{e.preventDefault()}) //to disable right click - to inspect use: CTRL + SHIFT + I
   return (
     <Router>
       <MyNavbar />
-      {isAuthenticated && <UserOptions user={user} />}
       {stripeApiKey && (
         <Elements stripe={loadStripe(stripeApiKey)}>
           <Routes>
@@ -70,6 +70,7 @@ function App() {
           </Routes>
         </Elements>
       )}
+      {isAuthenticated && <UserOptions user={user} />}
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/testLoader" element={<Loader />} />
@@ -100,6 +101,7 @@ function App() {
         <Route exact path='/admin/order/:id' element={<UpdateOrder/>}/>
         <Route exact path='/admin/users' element={<UserList/>}/>
         <Route exact path='/admin/user/:id' element={<UpdateUser/>}/>
+        <Route exact path='/admin/reviews' element={<ProductReviews/>}/>
         <Route
           exact
           path="/password/updatePassword"

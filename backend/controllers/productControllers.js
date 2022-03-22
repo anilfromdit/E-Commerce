@@ -203,30 +203,31 @@ exports.deleteReview = handleAsync(async (req, res, next) => {
     return next(new ErrorHandler("Product not found", 404));
   }
 
-  const review = product.reviews.filter(
-    (rev) => rev.user.toString() !== req.query.id.toString()
+  const reviews = product.reviews.filter(
+    (rev) => rev._id.toString() !== req.query.id.toString()
   );
+
 
   let avg = 0;
 
-  review.forEach((rev) => {
+  reviews.forEach((rev) => {
     avg += rev.rating;
   });
 
   let ratings = 0;
 
-  if (review.length === 0) {
+  if (reviews.length === 0) {
     ratings = 0;
   } else {
-    ratings = avg / review.length;
+    ratings = avg / reviews.length;
   }
 
-  const numOfReviews = review.length;
+  const numOfReviews = reviews.length;
 
   await Product.findByIdAndUpdate(
     req.query.productId,
     {
-      reviews: review,
+      reviews: reviews,
       ratings,
       numOfReviews,
     },
