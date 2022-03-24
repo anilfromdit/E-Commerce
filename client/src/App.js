@@ -10,6 +10,7 @@ import Products from "./component/Product/Products";
 import LoginSignUp from "./component/User/LoginSignUp";
 import { loadUser } from "./actions/userActions";
 import UserOptions from "./component/layout/Header/UserOptions";
+import Navbar from "./component/layout/Header/Navbar";
 import { useSelector } from "react-redux";
 import Profile from "./component/User/Profile";
 import UpdateProfile from "./component/User/UpdateProfile";
@@ -37,6 +38,8 @@ import UpdateUser from "./component/Admin/UpdateUser";
 import ProductReviews from "./component/Admin/ProductReviews";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { ProtectedRoute } from "./component/Route/ProtectedRoute";
+import InnerContent from "./component/Route/InnerContent";
 import axios from "axios";
 import store from "./store";
 
@@ -59,20 +62,22 @@ function App() {
     store.dispatch(loadUser());
     getStripeApiKey();
   }, []);
-  window.addEventListener("contextmenu",(e)=>{e.preventDefault()}) //to disable right click - to inspect use: CTRL + SHIFT + I
+
+   document.addEventListener("contextmenu", (e) => {e.preventDefault()})//to disable right click - to inspect use: CTRL + SHIFT + I
   return (
     <Router>
       <MyNavbar />
       {stripeApiKey && (
         <Elements stripe={loadStripe(stripeApiKey)}>
           <Routes>
-          <Route exact path="/process/payment" element={<Payment />} />
+            <Route exact path="/process/payment" element={<Payment />} />
           </Routes>
         </Elements>
       )}
       {isAuthenticated && <UserOptions user={user} />}
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/testNav" element={<Navbar />} />
         <Route exact path="/testLoader" element={<Loader />} />
         <Route exact path="/product/:id" element={<ProductDetails />} />
         <Route exact path="/products" element={<Products />} />
@@ -85,31 +90,69 @@ function App() {
         />
         <Route exact path="/login" element={<LoginSignUp />} />
         <Route path="/login/:redirect" element={<LoginSignUp />} />
-        <Route exact path="/shipping" element={<Shipping />} />
-        <Route exact path="/order/confirm" element={<ConfirmOrder />} />
         <Route exact path="/cart" element={<Cart />} />
-        <Route exact path="/account" element={<Profile />} />
-        <Route exact path="/success" element={<OrderSuccess />} />
-        <Route exact path="/myOrders" element={<MyOrders />} />
-        <Route exact path="/myOrder/:id" element={<OrderDetails />} />
-        <Route exact path="/me/update" element={<UpdateProfile />} />
-        <Route exact path='/admin/dashboard' element={<Dashboard/>}/>
-        <Route exact path='/admin/products' element={<ProductList/>}/>
-        <Route exact path='/admin/product/:id' element={<UpdateProduct/>}/>
-        <Route exact path='/admin/newProduct' element={<NewProduct/>}/>
-        <Route exact path='/admin/orders' element={<OrderList/>}/>
-        <Route exact path='/admin/order/:id' element={<UpdateOrder/>}/>
-        <Route exact path='/admin/users' element={<UserList/>}/>
-        <Route exact path='/admin/user/:id' element={<UpdateUser/>}/>
-        <Route exact path='/admin/reviews' element={<ProductReviews/>}/>
-        <Route
-          exact
-          path="/password/updatePassword"
-          element={<UpdatePassword />}
-        />
+
+
         <Route exact path="/password/reset" element={<ForgotPassword />} />
         <Route exact path="*" element={<Page404 />} />
+
+
+        <Route exact path="/account" element={<Profile />} />
+            <Route exact path='/admin/dashboard'  element={<Dashboard />} />
+            <Route exact path="/shipping" element={<Shipping />} />
+            <Route exact path="/order/confirm" element={<ConfirmOrder />} />
+            <Route exact path="/success" element={<OrderSuccess />} />
+            <Route exact path="/myOrders" element={<MyOrders />} />
+            <Route exact path="/myOrder/:id" element={<OrderDetails />} />
+            <Route exact path="/me/update" element={<UpdateProfile />} />
+            <Route exact path='/admin/products' element={<ProductList />} />
+            <Route exact path='/admin/product/:id'  element={<UpdateProduct />} />
+            <Route exact path='/admin/newProduct'  element={<NewProduct />} />
+            <Route exact path='/admin/orders'  element={<OrderList />} />
+            <Route exact path='/admin/order/:id'  element={<UpdateOrder />} />
+            <Route exact path='/admin/users'  element={<UserList />} />
+            <Route exact path='/admin/user/:id'  element={<UpdateUser />} />
+            <Route exact path='/admin/reviews'  element={<ProductReviews />} />
+            <Route
+              exact
+              path="/password/updatePassword"
+              element={<UpdatePassword />}
+            />
+
+
+        {/* <Route path="/" element={<ProtectedRoute />}>
+          <Route path="/" element={<InnerContent />}>
+
+
+            <Route exact path="/account" element={<Profile />} />
+            <Route exact path='/admin/dashboard' roleRequired="admin" element={<Dashboard />} />
+            <Route exact path="/shipping" element={<Shipping />} />
+            <Route exact path="/order/confirm" element={<ConfirmOrder />} />
+            <Route exact path="/success" element={<OrderSuccess />} />
+            <Route exact path="/myOrders" element={<MyOrders />} />
+            <Route exact path="/myOrder/:id" element={<OrderDetails />} />
+            <Route exact path="/me/update" element={<UpdateProfile />} />
+            <Route exact path='/admin/products' roleRequired="admin" element={<ProductList />} />
+            <Route exact path='/admin/product/:id' roleRequired="admin" element={<UpdateProduct />} />
+            <Route exact path='/admin/newProduct' roleRequired="admin" element={<NewProduct />} />
+            <Route exact path='/admin/orders' roleRequired="admin" element={<OrderList />} />
+            <Route exact path='/admin/order/:id' roleRequired="admin" element={<UpdateOrder />} />
+            <Route exact path='/admin/users' roleRequired="admin" element={<UserList />} />
+            <Route exact path='/admin/user/:id' roleRequired="admin" element={<UpdateUser />} />
+            <Route exact path='/admin/reviews' roleRequired="admin" element={<ProductReviews />} />
+            <Route
+              exact
+              path="/password/updatePassword"
+              element={<UpdatePassword />}
+            />
+
+          </Route>
+
+        </Route> */}
+
       </Routes>
+
+
       <Footer />
     </Router>
   );

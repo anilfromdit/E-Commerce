@@ -21,19 +21,18 @@ nav{
     align-items: center;
     z-index: 1;
     overflow: hidden;
-
+    padding : 0 10px;
 }
 .logo{
     align-items: center;
-    padding: 15px;
-    
+    padding: 10px;
 }
 .logo h2{
-    font-size: 2rem;
+    font-size: 1.8rem;
     color:white;
 }
 .logo span{
-    font-size: 2.8rem;
+    font-size: 2.6rem;
     color: white;
 }
 
@@ -51,13 +50,13 @@ nav{
     box-shadow: 0 0 15px rgba(0,0,0,0.274);
     background-color: white;
     border:none;
-    color: rgba(0,0,0,0.637);
-    padding: 0 2vmax;
+    color: black;
+    padding: 0 1.5vmax;
     width: 90%;
     outline: none;
     margin-right: 1vw;
-    border-radius: 19px;
-    font:300 1.1vmax cursive;
+    border-radius: 18px;
+    font:500 2vmax inherit;
     box-sizing: border-box;
     height: 100%;
 
@@ -72,40 +71,94 @@ nav{
 .submitButton:hover{
   opacity: 0.8;
   }
-  .cart{
-    color: white;
-    margin-right: 2.5vw;
-    
-  }
-  
-  .cart:hover{
-  opacity: .8;
+.rightMenu{
+  display: flex;
+}
+.rightMenu div{
+  display: block;
+}
+.rightMenu  div  a  svg{
+  width: 100%;
+  margin: auto auto;
+
+  text-decoration: none;
+  color: white;
 }
 
-@media (max-width: 770px) {
+@media (max-width: 890px) {
+  .logo{
+    align-items: center;
+    padding: 0;
+}
+.logo h2{
+    font-size: 1.2rem;
+}
+.logo span{
+    font-size: 2rem;
+}
+
+}
+
+@media (max-width: 800px) {
+  
+  .logo{
+    margin-right: 0.5vmax;
+  }
+  .search>input[type="text"]{
+    width: 50vw;
+  }
+  .menu-link li {
+    margin: auto 0.5vmax;
+  }
+  .menu-link li :hover {
+      border-bottom: 1px solid white;
+      padding-bottom: 2px;
+    }
+}
+
+
+@media(max-width:723px){
   .menu-link{
     display: none;
   }
+  .search{
+    width: 50vw;
+  }
   .search>input[type="text"]{
-    width: 25vw;
+    width: 40vw;
+    font-size: 3vmax;
   }
+
+}
+@media(max-width:393px){
+.logo span{
+    font-size: 2rem;
+}
+.logo h2{
+    font-size: 1.2rem;
 }
 
-@media(max-width:350px){
-  .logo h2{
-    font-size: 1rem;
-  }
 }
 
-@media(max-width:300px){
+@media(max-width:354px){
   .logo{
-    margin: auto;
-  }
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+  .logo span{
+    font-size: 2em;
+}
+.logo h2{
+    font-size: 1.2em;
+}
+
   .search{
     display: none;
   }
-.cart{
-  display: none;
-}
+  .rightMenu{
+    display: none;
+  }
 }
 
