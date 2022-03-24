@@ -68,7 +68,7 @@ const UpdateOrder = () => {
           <div
             className="confirmOrderPage"
             style={{
-              display: order.orderStatus === "Delivered" ? "block" : "grid",
+              display: order.orderStatus===("Refunded" || "Replaced")?"block":"grid",
             }}
           >
             <div>
@@ -155,7 +155,7 @@ const UpdateOrder = () => {
             {/*  */}
             <div
               style={{
-                display: order.orderStatus === "Delivered" ? "none" : "block",
+                display: order.orderStatus===("Refunded" || "Replaced")?"none":"block",
               }}
             >
               <form
@@ -167,12 +167,19 @@ const UpdateOrder = () => {
                 <div>
                   <AccountTreeIcon />
                   <select onChange={(e) => setStatus(e.target.value)}>
+                    
                     <option value="">Choose Status</option>
                       <option value="Processing">Processing</option>
                       <option value="Shipped">Shipped</option>
                       <option value="Delivered">Delivered</option>
+                      {
+                        (order.orderStatus==="Delivered" || "Returned" || "Replaced") &&
+                        <> 
                       <option value="Returned">Returned</option>
                       <option value="Refunded">Refunded</option>
+                      <option value="Replace">Replaced</option>
+                      </>
+                      }
                       
                     
                   </select>

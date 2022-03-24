@@ -4,6 +4,8 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import LoginIcon from '@mui/icons-material/Login';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 
 const MyNavbar = () => {
   const [keyword, setKeyword] = useState("");
@@ -50,7 +52,7 @@ const MyNavbar = () => {
             <li>
               <NavLink to="/products">Products</NavLink>
             </li>
-{/*             
+            
             {isAuthenticated ? (
               <li>
                 <NavLink to={mlink}>Profile</NavLink>
@@ -62,30 +64,55 @@ const MyNavbar = () => {
               </li>
             )
             
-            } */}
+            }
              <li>
                 <NavLink to={mlink}>{text}</NavLink>
               </li>
 
             <li>
-              <NavLink to="/contact">contact</NavLink>
+              <NavLink to="/contact">Contact</NavLink>
             </li>
           </ul>
         </div>
 
-        <form className="search" onSubmit={searchSubmitHandler}>
+        <form className="search" id="searchForm" onSubmit={searchSubmitHandler}>
           <input
             type="text"
-            placeholder="search your product..."
+            placeholder="search here"
             onChange={(e) => setKeyword(e.target.value)}
           />
           <button type="submit" className="submitButton">
             {<SearchIcon />}
           </button>
         </form>
-        <NavLink to="/cart" className="cart">
+        <div className="rightMenu">
+          <div>
+        <NavLink to="/cart">
           <ShoppingCartIcon />
         </NavLink>
+        </div>
+            {
+              isAuthenticated?
+              <div className="profile">
+                <NavLink to='/account'>
+              <AccountCircleRoundedIcon/>
+              </NavLink>
+              <p style={{width:"100%",textAlign:"center"}}>
+                Profile
+              </p>
+              </div>
+              :
+              <div className="login">
+              <NavLink to='/login'>
+              <LoginIcon/>
+              </NavLink>
+              <p style={{width:"100%",textAlign:"center"}}>
+                Login
+              </p>
+              </div>
+            }
+
+        </div>
       </nav>
     </Fragment>
   );

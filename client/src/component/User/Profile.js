@@ -8,11 +8,11 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LockIcon from '@mui/icons-material/Lock';
 const Profile = () => {
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
-  useEffect(() => {
-    if (isAuthenticated === false) {
-window.location.href='/login'      
-    }
-  },[]);
+//   useEffect(() => {
+//     if (isAuthenticated === false) {
+// window.location.href='/login'      
+//     }
+//   },[]);
     return (
       <Fragment>
         { !loading && user? 

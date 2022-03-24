@@ -76,8 +76,12 @@ exports.updateOrderStatus = handleAsync(async (req, res, next) => {
     return next(new ErrorHandler("Order not found with this id", 404));
   }
 
-  if (order.orderStatus === "Delivered") {
-    return next(new ErrorHandler("You have already delivered this order", 400));
+  if (order.orderStatus === "Refunded") {
+    return next(new ErrorHandler("You have already Initiated Refunded for This Order", 400));
+  }
+
+  if (order.orderStatus === "Replaced") {
+    return next(new ErrorHandler("You have already Replaced This Order", 400));
   }
 
   order.orderItems.forEach(async (o) => {
