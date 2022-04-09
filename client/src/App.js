@@ -10,7 +10,6 @@ import Products from "./component/Product/Products";
 import LoginSignUp from "./component/User/LoginSignUp";
 import { loadUser } from "./actions/userActions";
 import UserOptions from "./component/layout/Header/UserOptions";
-import Navbar from "./component/layout/Header/Navbar";
 import { useSelector } from "react-redux";
 import Profile from "./component/User/Profile";
 import UpdateProfile from "./component/User/UpdateProfile";
@@ -77,7 +76,6 @@ function App() {
       {isAuthenticated && <UserOptions user={user} />}
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/testNav" element={<Navbar />} />
         <Route exact path="/testLoader" element={<Loader />} />
         <Route exact path="/product/:id" element={<ProductDetails />} />
         <Route exact path="/products" element={<Products />} />

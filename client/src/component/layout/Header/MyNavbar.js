@@ -65,12 +65,8 @@ const MyNavbar = () => {
             )
             
             }
-             <li>
-                <NavLink to={mlink}>{text}</NavLink>
-              </li>
-
             <li>
-              <NavLink to="/contact">Contact</NavLink>
+              <a href="https://anilgulati.herokuapp.com/#contact">Contact</a>
             </li>
           </ul>
         </div>
