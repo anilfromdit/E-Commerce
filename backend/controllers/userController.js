@@ -6,7 +6,7 @@ const sendToken = require("../utils/jwtToken");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
 const sendEmail = require("../utils/sendEmail");
-
+const requestIp = require('request-ip');
 // Creating a user account
 exports.registerUser = handleAsync(async (req, res, next) => {
 
@@ -46,7 +46,7 @@ exports.registerUser = handleAsync(async (req, res, next) => {
 let message = `${name},Thank you for signing up at E-mart.\nLooking forward to serve you`
   await sendEmail({
     email,
-    subject: `${name}, Welcome To E-mart`,
+    subject: `Welcome To E-mart`,
     message,
   });
 
@@ -68,6 +68,13 @@ exports.loginUser = handleAsync(async (req, res, next) => {
   if (!isPasswordMatched) {
     return next(new ErrorHandler("Invalid email or password", 401));
   }
+  var clientIp = requestIp.getClientIp(req);
+  let message = `${user.name}, A new login to your account from IP: ${clientIp} is detected\nIf not done by you we recommend you to change your password immediately`
+  await sendEmail({
+    email,
+    subject: `New Login Detected`,
+    message,
+  });
 
   sendToken(user, 200, res);
 });
