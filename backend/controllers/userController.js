@@ -31,6 +31,8 @@ exports.registerUser = handleAsync(async (req, res, next) => {
   else{
 
   }
+
+  
   const user = await User.create({
     name,
     email,
@@ -40,6 +42,12 @@ exports.registerUser = handleAsync(async (req, res, next) => {
       public_id: my_public_id,
       url: my_url,
     },
+  });
+let message = `${name},Thank you for signing up at E-mart.\nLooking forward to serve you`
+  await sendEmail({
+    email,
+    subject: `${name}, Welcome To E-mart`,
+    message,
   });
 
   sendToken(user, 201, res);
