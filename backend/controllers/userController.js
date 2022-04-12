@@ -44,12 +44,16 @@ exports.registerUser = handleAsync(async (req, res, next) => {
     },
   });
 let message = `${name},Thank you for signing up at E-mart.\nLooking forward to serve you`
-  await sendEmail({
+try{  
+await sendEmail({
     email,
     subject: `Welcome To E-mart`,
     message,
   });
-
+}
+catch(e){
+  console.log(e.message)
+}
   sendToken(user, 201, res);
 });
 
@@ -70,12 +74,16 @@ exports.loginUser = handleAsync(async (req, res, next) => {
   }
   var clientIp = requestIp.getClientIp(req);
   let message = `${user.name}, A new login to your account from IP: ${clientIp} is detected\nIf not done by you we recommend you to change your password immediately`
+ try{
   await sendEmail({
     email,
     subject: `New Login Detected`,
     message,
   });
-
+}
+catch(e){
+  console.log(e.message)
+}
   sendToken(user, 200, res);
 });
 
