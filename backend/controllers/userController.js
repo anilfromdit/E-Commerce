@@ -161,6 +161,17 @@ exports.resetPassword = handleAsync(async (req, res, next) => {
 
   await user.save();
 
+  let message = `${user.name},You successfully recovered your login password for Emart.\nIf not done by you change your password immediately`
+  try{  
+  await sendEmail({
+      email,
+      subject: `Password Recovered Successfully`,
+      message,
+    });
+  }
+  catch(e){
+    console.log(e);
+  }
   sendToken(user, 200, res);
 });
 
