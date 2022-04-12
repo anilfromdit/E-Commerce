@@ -108,11 +108,11 @@ const Profile = () => {
               </div>
             </div>
           </Fragment>:
-          <Loader/>
+        <Loader/>
         }
       </Fragment>
 
-    );
+);
   
 
 };

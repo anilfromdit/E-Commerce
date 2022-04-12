@@ -36,9 +36,9 @@ import UpdateOrder from "./component/Admin/UpdateOrder";
 import UpdateUser from "./component/Admin/UpdateUser";
 import ProductReviews from "./component/Admin/ProductReviews";
 import { Elements } from "@stripe/react-stripe-js";
+import PrivateRouter from "./PrivateRouter";
+import ProtectedRoute from "./component/Route/ProtectedRoute";
 import { loadStripe } from "@stripe/stripe-js";
-import { ProtectedRoute } from "./component/Route/ProtectedRoute";
-import InnerContent from "./component/Route/InnerContent";
 import axios from "axios";
 import store from "./store";
 
@@ -61,8 +61,7 @@ function App() {
     store.dispatch(loadUser());
     getStripeApiKey();
   }, []);
-
-   document.addEventListener("contextmenu", (e) => {e.preventDefault()})//to disable right click - to inspect use: CTRL + SHIFT + I
+  document.addEventListener("contextmenu", (e) => { e.preventDefault() })//to disable right click - to inspect use: CTRL + SHIFT + I
   return (
     <Router>
       <MyNavbar />
@@ -74,6 +73,14 @@ function App() {
         </Elements>
       )}
       {isAuthenticated && <UserOptions user={user} />}
+      {/* <ProtectedRoute path='/account'component={Profile}/> */}
+     
+      {/* <ProtectedRoute path='/'>
+<Route path="/account" element={<Profile/>} />
+
+      </ProtectedRoute> */}
+
+
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/testLoader" element={<Loader />} />
@@ -94,28 +101,29 @@ function App() {
         <Route exact path="/password/reset" element={<ForgotPassword />} />
         <Route exact path="*" element={<Page404 />} />
 
-
-        <Route exact path="/account" element={<Profile />} />
-            <Route exact path='/admin/dashboard'  element={<Dashboard />} />
-            <Route exact path="/shipping" element={<Shipping />} />
-            <Route exact path="/order/confirm" element={<ConfirmOrder />} />
-            <Route exact path="/success" element={<OrderSuccess />} />
-            <Route exact path="/myOrders" element={<MyOrders />} />
-            <Route exact path="/myOrder/:id" element={<OrderDetails />} />
-            <Route exact path="/me/update" element={<UpdateProfile />} />
-            <Route exact path='/admin/products' element={<ProductList />} />
-            <Route exact path='/admin/product/:id'  element={<UpdateProduct />} />
-            <Route exact path='/admin/newProduct'  element={<NewProduct />} />
-            <Route exact path='/admin/orders'  element={<OrderList />} />
-            <Route exact path='/admin/order/:id'  element={<UpdateOrder />} />
-            <Route exact path='/admin/users'  element={<UserList />} />
-            <Route exact path='/admin/user/:id'  element={<UpdateUser />} />
-            <Route exact path='/admin/reviews'  element={<ProductReviews />} />
-            <Route
-              exact
-              path="/password/updatePassword"
-              element={<UpdatePassword />}
-            />
+        {/* <PrivateRouter exact path="/account" element={ <Profile />} /> */}
+        {/* <ProtectedRoute exact path="/account" element={<Profile />} /> */}
+        <Route exact path='/account' element={<Profile />} />
+        <Route exact path='/admin/dashboard' element={<Dashboard />} />
+        <Route exact path="/shipping" element={<Shipping />} />
+        <Route exact path="/order/confirm" element={<ConfirmOrder />} />
+        <Route exact path="/success" element={<OrderSuccess />} />
+        <Route exact path="/myOrders" element={<MyOrders />} />
+        <Route exact path="/myOrder/:id" element={<OrderDetails />} />
+        <Route exact path="/me/update" element={<UpdateProfile />} />
+        <Route exact path='/admin/products' element={<ProductList />} />
+        <Route exact path='/admin/product/:id' element={<UpdateProduct />} />
+        <Route exact path='/admin/newProduct' element={<NewProduct />} />
+        <Route exact path='/admin/orders' element={<OrderList />} />
+        <Route exact path='/admin/order/:id' element={<UpdateOrder />} />
+        <Route exact path='/admin/users' element={<UserList />} />
+        <Route exact path='/admin/user/:id' element={<UpdateUser />} />
+        <Route exact path='/admin/reviews' element={<ProductReviews />} />
+        <Route
+          exact
+          path="/password/updatePassword"
+          element={<UpdatePassword />}
+        />
 
 
         {/* <Route path="/" element={<ProtectedRoute />}>
@@ -147,9 +155,10 @@ function App() {
           </Route>
 
         </Route> */}
+        
 
       </Routes>
-
+      
 
       <Footer />
     </Router>
