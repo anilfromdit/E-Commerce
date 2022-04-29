@@ -21,6 +21,7 @@ html {
 }
 
 .productCard {
+  max-width: 90vw;
   background: rgba(209, 227, 221, 0.4);
   min-height: 525px;
   border-radius: 9px;

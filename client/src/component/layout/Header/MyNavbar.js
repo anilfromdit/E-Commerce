@@ -35,7 +35,7 @@ const MyNavbar = () => {
 
   return (
     <Fragment>
-      <nav>
+      <div className="nav2">
         <div className="logo">
           <NavLink to="/" style={{ textDecoration: "none" }}>
             <h2>
@@ -43,7 +43,7 @@ const MyNavbar = () => {
             </h2>
           </NavLink>
         </div>
-
+{/* 
         <div className={"menu-link"}>
           <ul>
             <li>
@@ -69,19 +69,20 @@ const MyNavbar = () => {
               <a href="https://anilgulati.herokuapp.com/#contact">Contact</a>
             </li>
           </ul>
-        </div>
+        </div> */}
 
         <form className="search" id="searchForm" onSubmit={searchSubmitHandler}>
           <input
             type="text"
             placeholder="search here"
             onChange={(e) => setKeyword(e.target.value)}
+            
           />
           <button type="submit" className="submitButton">
             {<SearchIcon />}
           </button>
         </form>
-        <div className="rightMenu">
+        {/* <div className="rightMenu">
           <div>
         <NavLink to="/cart">
           <ShoppingCartIcon />
@@ -108,8 +109,8 @@ const MyNavbar = () => {
               </div>
             }
 
-        </div>
-      </nav>
+        </div> */}
+      </div>
     </Fragment>
   );
 };

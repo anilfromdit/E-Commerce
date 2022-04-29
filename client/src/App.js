@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import Profile from "./component/User/Profile";
 import UpdateProfile from "./component/User/UpdateProfile";
 import MyNavbar from "./component/layout/Header/MyNavbar";
+import Navbar from "./component/layout/BottomNavBar/Navbar";
 import UpdatePassword from "./component/User/UpdatePassword";
 import ForgotPassword from "./component/User/ForgotPassword";
 import ResetPassword from "./component/User/ResetPassword";
@@ -65,6 +66,7 @@ function App() {
   return (
     <Router>
       <MyNavbar />
+      <Navbar />
       {stripeApiKey && (
         <Elements stripe={loadStripe(stripeApiKey)}>
           <Routes>
@@ -72,7 +74,7 @@ function App() {
           </Routes>
         </Elements>
       )}
-      {isAuthenticated && <UserOptions user={user} />}
+      {/* {isAuthenticated && <UserOptions user={user} />} */}
       {/* <ProtectedRoute path='/account'component={Profile}/> */}
      
       {/* <ProtectedRoute path='/'>
